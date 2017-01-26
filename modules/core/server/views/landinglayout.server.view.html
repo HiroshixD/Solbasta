@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Solbasta | Registro</title>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="assets/landing.css">
+    <link href="assets/webicons/landing.css" rel="stylesheet">
+  </head>
+
+    <header>
+      <div class="am"><a href="index.html" title="Portada" id="logo">SolBasta</a></div>
+    </header>
+  <body>
+      <main>
+        <section>
+        {% block content %}{% endblock %}
+    </section> 
+    </main>
+    <footer>
+      <div class="am">
+        <h3>Conoce más en:</h3>
+        <div class="redes"><a href="#" title="Facebook" class="icon-facebook"><span>Facebook </span></a><a href="#" title="Facebook" class="icon-twitter"><span>Twitter</span></a><a href="#" title="Youtube" class="icon-youtube"><span>Youtube</span></a><a href="#" title="Instagram" class="icon-instagram"><span>Instagran</span></a></div>
+        <hr>
+      </div>
+    </footer>
+    <script type="text/javascript">
+        var user = {{ user | json | safe }};
+    </script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+    <!--Application JavaScript Files-->
+  {% for jsFile in jsFiles %}
+  <script type="text/javascript" src="{{jsFile}}"></script>
+  {% endfor %} 
+
+
+
+  {% if livereload %}
+    <!--Livereload script rendered -->
+    <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
+    {% endif %}
+
+    <script type="text/javascript" src="assets/js/landing.js"></script>
+  </body>
+</html>

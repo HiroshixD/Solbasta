@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <base href="/">
+  <title page-title></title>
+  <meta name="description" content="{{description}}">
+  <meta name="fragment" content="!">
+
+  <!-- Apple META -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Facebook META -->
+  <meta property="fb:app_id" content="{{facebookAppId}}">
+  <meta property="og:site_name" content="{{title}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="{{logo}}">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter META -->
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:url" content="{{url}}">
+  <meta name="twitter:image" content="{{logo}}">
+
+  <!-- Fav Icon -->
+  <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Application CSS Files -->
+  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+</head>
+
+
+
+
+<body class="ng-cloak">
+  <header ng-include="'/modules/core/client/views/admin/layouts/header.admin.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <!--<div ng-include="'/modules/core/client/views/admin/layouts/sidebar.admin.view.html'"></div>-->
+  <div id="sidebar" class="sidebar" ng-controller="HeaderController as vm">
+      <!-- begin sidebar scrollbar -->
+      <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar user -->
+        <ul class="nav">
+          <li class="nav-profile">
+            <div class="image">
+              <a href="javascript:;"><img src="assets/img/user-13.jpg" alt="" /></a>
+            </div>
+            <div class="info">
+              <span ng-bind="vm.authentication.user.displayName"></span>
+            </div>
+          </li>
+          <li>
+            <a href="/" target="_self"><i class="fa fa-home"></i> Ir al inicio</a>
+          </li>
+        </ul>
+        <!-- end sidebar user -->
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+          <li class="nav-header">Navegación</li>
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Dashboard Slider</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="productos.slidercreate" ng-show="vm.slider === 0">Crear Slider</a></li>
+                <li><a ui-sref="productos.sliderlist">Mi actual Slider</a></li>
+
+            </ul>
+          </li> 
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-ticket"></i>
+                <span>Subastas</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="detalle_subastas.list">Listar Subastas</a></li>
+                <li><a ui-sref="detalle_subastas.create">Crear una nueva subasta</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-leaf"></i>
+                <span>Categorías</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="categorias.list">Listar Categorías</a></li>
+                <li><a ui-sref="categorias.create">Crear una nueva categoría</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-paw"></i>
+                <span>Marcas</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="marcas.list">Listar Marcas</a></li>
+                <li><a ui-sref="marcas.create">Crear una nueva marca</a></li>
+            </ul>
+          </li>
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Productos</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="productos.list">Listar Productos</a></li>
+                <li><a ui-sref="productos.create">Crear una nuevo producto</a></li>
+            </ul>
+          </li>
+<!--           <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Paquetes</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="paquetes.list">Listar Paquetes</a></li>
+                <li><a ui-sref="paquetes.create">Crear una nuevo paquete</a></li>
+            </ul>
+          </li> -->
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Cupones</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="cupones.list">Listar Todos los cupones</a></li>
+                <li><a ui-sref="cupones.create">Crear un nuevo cupón</a></li>
+            </ul>
+          </li>
+<!--           <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Testimonios</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="testimonios.create">Añadir testimonios</a></li>
+            </ul>
+          </li>  -->
+          <li class="has-sub">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Cuentas</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="cuentas.admin">Administrar cuentas de usuario</a></li>
+            </ul>
+          </li> 
+
+          <li class="has-sub" style="display:none;">
+            <a href="javascript:;">
+                <b class="caret pull-right"></b>
+                <i class="fa fa-shopping-basket "></i>
+                <span>Chat</span>
+              </a>
+            <ul class="sub-menu">
+                <li><a ui-sref="cuentas.chat">Chat</a></li>
+            </ul>
+          </li> 
+
+
+
+        
+              <!-- begin sidebar minify button 
+          <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+              end sidebar minify button -->
+        </ul>
+        <!-- end sidebar nav -->
+      </div>
+      <!-- end sidebar scrollbar -->
+    </div>
+    
+    <div class="sidebar-bg"></div>
+
+    <section>
+      {% block content %}{% endblock %}
+  </section>
+
+
+  <!--Embedding The User Object-->
+  <script type="text/javascript">
+    var user = {{ user | json | safe }};
+  </script>
+  <!--Load The Socket.io File-->
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+  <!--Application JavaScript Files-->
+  <script type="text/javascript" src="assets/plugins/jquery/jquery-1.9.1.min.js"></script>
+
+  {% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+
+  {% if livereload %}
+  <!--Livereload script rendered -->
+  <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
+  {% endif %}
+
+  <script>
+    $(document).ready(function() {
+      App.init();
+      DashboardV2.init();
+      Gallery.init();
+    });
+  </script>
+</body>
+
+</html>

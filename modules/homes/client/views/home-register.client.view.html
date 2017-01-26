@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+      <div  class= "col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <div class="">
+          <div class="text_centro">REGISTRATE AQUI</div>
+
+          
+    <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+            <div class="row">
+              <div  class= "col-xs-12 col-sm-6 col-md-6 col-lg-6 txt_registro">Regístrate en Solbasta. Llena tus datos y empieza a ahorrar. ¿Ya estás registrado? Entonces Inicia Sesión Los campos marcados con un asterísco (*) son obligatorios.</div>
+              <div  class= "col-xs-12 col-sm-6 col-md-6 col-lg-6"></div>
+            </div>
+            <div class="row">
+                <div  class= "col-xs-12 col-sm-6 col-md-5 col-lg-5 alt_15"><span>NOMBRE DE USUARIO Y CONTRASEÑA</span><br /><br />
+                  <div class="form-group">
+                  <input type="text" id="username" name="username" class="form-control" ng-model="vm.credentials.username" placeholder="Nombre de usuario (Entre 3 y 10 caracteres)" lowercase required>
+                  </div>
+                </div>
+                <div  class= "col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+                <div  class= "col-xs-12 col-sm-6 col-md-5 col-lg-5 txt_registro">
+                    <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" placeholder="Contraseña (Entre 6 y 20 Caractéres)" uib-popover="{{vm.getPopoverMsg()}}" uib-popover-trigger="focus" password-validator required></div>
+                    <div class="form-group"><input type="password" class="form-control" id="password2" placeholder="Confirma tu contraseña"></div>
+                </div>
+              <div  class= "col-xs-12 col-sm-6 col-md-5 col-lg-5"><span>INFORMACION PERSONAL</span><br /><br />
+                  <div class="form-group">
+                  <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.credentials.firstName" placeholder="Ingresa tus nombres completo" required>
+                  </div>
+                  <div class="form-group">
+                     <input type="email" id="email" name="email" class="form-control" ng-model="vm.credentials.email" placeholder="Email" lowercase required>
+                  </div>
+                  <div class="form-group">
+                  <input type="email" class="form-control" id="" placeholder="Confirmar correo electrónico">
+                  </div>
+                  <div class="form-group">
+                    <select class="form-control" id="docType" ng-model="vm.credentials.docType" required>
+                      <option value=1>DNI</option>
+                      <option value=2>Pasaporte</option>
+                      <option value=3>Otros</option>
+                    </select>
+                  </div>  
+              </div>
+              <div  class= "col-xs-0 col-sm-0 col-md-2 col-lg-2"></div>
+              <div  class= "col-xs-12 col-sm-6 col-md-5 col-lg-5 alt_40">                 
+                  <div class="form-group">
+                     <input type="text" id="lastName" name="lastName" class="form-control" ng-model="vm.credentials.lastName" placeholder="Ingresa tus apellidos" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" id="birthDate" name="birthDate" class="form-control" ng-model="vm.credentials.birthDate" placeholder="Fecha de nacimiento" required>
+
+                  </div>
+                  
+                  <div class="form-group">
+                      <select class="form-control" id="gender" ng-model="vm.credentials.gender" required>
+                        <option value="M">Hombre</option>
+                        <option value="F">Mujer</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                        <input type="text" id="docNumber" name="docNumber" class="form-control" ng-model="vm.credentials.docNumber" placeholder="Ingresa tu DNI" required>
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div  class= "col-xs-12 col-sm-5 col-md-5 col-lg-5"><span>INFORMACION ADICIONAL</span><br /><br />¿Fuiste recomendado por algún usuario? Si no fue así, deja este campo en blanco.<br /><br />
+              <div class="form-group">
+               <input type="text" id="referral" name="referral" class="form-control" ng-model="vm.credentials.referral" placeholder="id de referido" lowercase required>
+              </div>
+              <span>Ingrese el nombre de usuario o la dirección de correo electrónico de la persona que lo refirió.</span>
+              </div>
+              <div  class= "col-xs-12 col-sm-5 col-md-5 col-lg-5"></div>
+            </div>
+            <div class="row">
+              <div  class= "col-xs-12 col-sm-12 col-md-12 col-lg-12"><br /><br />
+                <span>GANA SOLES</span>
+                <span>Dale like a nuestras redes sociales o comparte en estas ¡Y obtén más beneficios!</span><br /><br />
+                  <a class="btn btn-default" href="#" role="button">Like + 2 Soles</a>
+                  <a class="btn btn-default" href="#" role="button">Compartir + 3 Soles</a>
+                  <a class="btn btn-default" href="#" role="button">Seguir + 2 soles</a>
+                  <a class="btn btn-default" href="#" role="button">Retwit + 3 Soles</a>
+              </div>
+              <div  class= "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="checkbox">
+            <label>
+            <input name="suscriptionState" data-ng-model="vm.credentials.suscriptionState" id="suscriptionState" type="checkbox" value="">SUSCRIBIRME AL BOLETIN DE SUBASTAS, PROMOCIONES Y ANUNCIOS</label>
+                   <label>
+                    <input type="checkbox"> HE LEIDO Y ACEPTO LOS TERMINOS Y CONDICIONES / LA POlITICA DE PRIVACIDAD Y SOY MAYOR DE 18 AÑOS DE EDAD.
+                  </label>
+                </div>
+              </div>
+
+
+     <input type="hidden" id="roles" name="roles" class="form-control" ng-model="vm.tipoderol" placeholder="id de referido" value='user' lowercase required>
+
+
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+          &nbsp; or&nbsp;
+          <a ui-sref="login" class="show-signup">Iniciar Sesión</a>
+        </div>
+        <div ng-show="vm.error" class="text-center text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </form>
+        </div>
+      </div>
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+  </div>
+</div>

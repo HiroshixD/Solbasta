@@ -1,0 +1,180 @@
+
+    <section class="modalTestimonio">
+        
+        <div class="closeModalTestimonio">
+            <img src="assets/img/cancel.png" class="cancelModalTestimonio">
+        </div>
+
+        <div class="embed-container">
+            <iframe src="https://www.youtube.com/embed/8ldUQmEOHVg" id="videoTestimonio" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div class="descripcion-testimonio">
+            <div class="left-descripcion-testimonio">
+          <span class="product-testimonio">
+            <i class="icon-regalo"></i> 
+            Laptop Toshiba 15” Satelite
+          </span>
+          <span class="user-testimonio">
+            <i class="icon-usuario"></i>
+            Usuario: Mogo123
+          </span>
+            </div>
+            <div class="right-descripcion-testimonio">
+          <p>En verdad cuando entre desconfíe como muchos, pero el tiempo y ver los testimonios hicieron que esa desconfianza se fuera poco a poco, hasta que gané el premio una tarjeta con S/. 400. Estoy muy feliz y animaría a todos a probar este sitio web que esta muy entretenido. Saludos.</p>
+          <button>VER SUBASTA</button>
+            </div>
+        </div>
+    </section>
+
+    <div id="subastas">
+      <div class="am">
+
+        <section class="envivo">
+          <h1>Testimonios</h1>           
+
+          <div class="wrap-testimonios">
+
+
+            <article class="testimonio-block leftMessageTestimonio">
+
+                <div class="testimonioMsg leftMsgTst" style="display: none">
+                    <p> 
+                        <span></span>Gracias solbasta, por el play station 4, solo con 3 ofertas me lo gane. Muy seguros y efectivos.<span></span>
+                    </p>
+                </div>
+
+              <div class="versubasta vermas-foto">
+                ver subasta
+              </div>
+              <picture>
+                <img src="http://i.imgbox.com/OUs6JNlm.jpg" alt="">
+              </picture>
+              <aside>
+                <p>
+                  <span class="title-testimonio">
+                    Iphone 6s Plus
+                  </span>
+                  <span>
+                    Usuario: mogo123
+                    <br>Fecha: 12 de Julio, 2016
+                  </span>
+                </p>
+              </aside>
+            </article>
+            
+            <!-- [.testimonio-video] only for videos-->
+            <article class="testimonio-block testimonio-video">
+              
+              <div class="testimonio-play">
+                <div class="buttom-play"></div>
+              </div>
+              
+              <div class="versubasta vermas-video">
+                ver subasta
+              </div>
+              <picture>
+                <img src="http://i.imgbox.com/OUs6JNlm.jpg" alt="">
+              </picture>
+              <aside>
+                <p>
+                  <span class="title-testimonio">
+                    Iphone 6s Plus
+                  </span>
+                  <span>
+                    Usuario: mogo123
+                    <br>Fecha: 12 de Julio, 2016
+                  </span>
+                </p>
+              </aside>
+            </article>
+
+            <article class="testimonio-block rightMessageTestimonio">
+                <div class="testimonioMsg rightMsgTst" style="display: none">
+                    <p> 
+                        <span></span>Gracias solbasta, por el play station 4, solo con 3 ofertas me lo gane. Muy seguros y efectivos.<span></span>
+                    </p>
+                </div>
+              <div class="versubasta vermas-foto">
+                ver subasta
+              </div>
+              <picture>
+                <img src="http://i.imgbox.com/OUs6JNlm.jpg" alt="">
+              </picture>
+              <aside>
+                <p>
+                  <span class="title-testimonio">
+                    Iphone 6s Plus
+                  </span>
+                  <span>
+                    Usuario: mogo123
+                    <br>Fecha: 12 de Julio, 2016
+                  </span>
+                </p>
+              </aside>
+            </article>
+
+            <div class="filtro-testimonios">
+              <ul id="buttoms-filtro-ul">
+                <li class="active">Todos</li>
+                <li>Videos</li>
+                <li>Fotos</li>
+              </ul>
+            </div>         
+          </div>
+        </section>              
+
+        <div class="navegacion">
+          <button>&lt;&lt; Anterior<span>Primera página</span></button>
+          <button>1</button>
+          <button class="activo">2</button>
+          <button>3</button>
+          <button>&gt;&gt; Siguiente<span>Última página</span></button>
+        </div>
+      </div>
+    </div>
+
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script>
+
+    var iframe = document.getElementById('videoTestimonio');
+    $('.modalTestimonio').hide();
+
+    $(document).keyup(function(e) {
+        if (e.keyCode == 27) {
+            $('.modalTestimonio').hide();
+            iframe.src = iframe.src;
+        }
+    });
+
+    $('.closeModalTestimonio').on('click', function(){
+        $('.modalTestimonio').hide();            
+        iframe.src = iframe.src;
+    });
+
+    $('.leftMessageTestimonio').on('mouseover', function(){
+        $('.leftMsgTst').show();
+        $('.leftMsgTst').css('position', 'absolute');
+        $('.leftMsgTst').css('right', '220px');
+        $('.leftMsgTst').css('width', '180px');
+    });
+
+    $('.rightMessageTestimonio').on('mouseover', function(){
+        $('.rightMsgTst').show();
+        $('.rightMsgTst').css('position', 'absolute');
+        $('.rightMsgTst').css('left', '220px');
+        $('.rightMsgTst').css('width', '180px');
+    });        
+
+    $('.leftMessageTestimonio').on('mouseout', function(){
+        $('.leftMsgTst').hide();
+    });
+
+    $('.rightMessageTestimonio').on('mouseout', function(){
+        $('.rightMsgTst').hide();
+    });
+
+    $('.testimonio-block').on('click', function(){
+        $('.modalTestimonio').fadeIn( "slow", function() {});       
+    });
+</script>

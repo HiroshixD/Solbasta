@@ -1,0 +1,21 @@
+<section>
+  <div class="page-header">
+    <h1>Compartidos</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="compartido in vm.compartidos" ui-sref="compartidos.view({ compartidoId: compartido._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="compartido.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="compartido.user" ng-bind="compartido.user.displayName"></span>
+        <span ng-if="!compartido.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="compartido.title"></h4>
+      <p class="list-group-item-text" ng-bind="compartido.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.compartidos.$resolved && !vm.compartidos.length">
+    No compartidos yet, why don't you <a ui-sref="compartidos.create">create one</a>?
+  </div>
+</section>

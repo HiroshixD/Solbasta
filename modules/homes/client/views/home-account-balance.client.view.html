@@ -1,0 +1,59 @@
+    <main id="mi-cuenta" ng-init="vm.setPagination(10)">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+            <ul>
+              <li><a ui-sref="homes.summary" class="icon-usuario">Resumen</a></li>
+              <li><a ui-sref="homes.settings" class="icon-editar">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" class="icon-marcador">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" class="icon-archivos activo">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" class="icon-copa">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" class="icon-usuarios">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li><a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis<span>Este es tu codigo<span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b></span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="historial-de-solsazos">
+          <h1><span>Historial de Solsazos</span></h1>
+          <div id="filtros-historial-solsazos" class="select-especial">
+
+            <select name="por" ng-model="vm.order" ng-change="vm.getFilter(vm.order);">
+              <option value="" selected>Filtrar por:</option>
+              <option value="-created">Fecha de transacción</option>
+              <option value="0">Solsazos comprados</option>
+              <option value="2">Solsazos ganados</option>
+              <option value="1">Solsazos ofertados</option>
+            </select>
+            <span class="icon-flecha"></span>
+            <ul>
+              <li ng-click="vm.getFilter('-created')">Fecha de transacción</li>
+              <li ng-click="vm.getFilter(0)">Solsazos comprados</li>
+              <li ng-click="vm.getFilter(2)">Solsazos ganados</li>
+              <li ng-click="vm.getFilter(1)">Solsazos ofertados</li>
+            </ul>
+          </div>
+          <h2><span>Fecha / Hora</span><span>Descripción</span><span>Crédito</span></h2>
+          <ul id="lista">
+            <li ng-repeat="item in vm.transactions | orderBy : vm.orderby | filter: vm.filter | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+              <span>{{item.created | date :  "dd/MM/y hh:mm:ss"}}</span>
+              <span ng-show="item.descripcion" ui-sref="homes.details({ detalle_subastaId: item.subasta._id })">{{item.descripcion}}</span>
+              <span>{{item.soles_transferencia}}</span>
+            </li>
+           
+          </ul>
+          <div class="navegacion">
+            <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1">&lt;&lt; Anterior<span>Página anterior</span></button>
+            <button class="activo">{{vm.currentPage+1}}</button>
+            <button ng-disabled="vm.currentPage >= vm.transactions.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.numberOfPages(vm.transactions)-1">{{vm.numberOfPages(vm.transactions)}}</button>
+            <button ng-disabled="vm.currentPage >= vm.transactions.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1">&gt;&gt; Siguiente<span>Siguiente página</span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="assets/js/script.js">				</script>

@@ -1,0 +1,54 @@
+<div id="content" class="content">
+     
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Nueva categoría</h4>
+                        </div>
+                        <div class="panel-body">
+                           
+                           <section>
+  <div class="page-header">
+    <h1>{{vm.marca._id ? 'Editar Marca' : 'Nueva Marca'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.marcaForm" class="form-horizontal" ng-submit="vm.save(vm.form.marcaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="nombre">Nombre de marca</label>
+          <input name="nombre" type="text" ng-model="vm.marca.nombre" id="nombre" class="form-control" placeholder="Nombre de marca" required>
+          <div ng-messages="vm.form.marcaForm.nombre.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Marca nombre is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="estado">Estado:</label>
+            <select name="estado" data-ng-model="vm.marca.estado" id="estado" class="form-control">
+              <option value=1>Activo</option>
+              <option value=0>Inactivo</option>
+            </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.marca._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

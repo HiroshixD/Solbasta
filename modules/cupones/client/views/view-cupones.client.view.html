@@ -1,0 +1,53 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Ver detalle de cupón</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.cupon.title"></h1>
+  </div>
+  <div class="pull-right" ng-show="true">
+    <a class="btn btn-primary" ui-sref="cupones.edit({ cuponId: vm.cupon._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Cupón creado
+      <span ng-bind="vm.cupon.created | date:'mediumDate'"></span>
+      por
+      <span ng-if="vm.cupon.user" ng-bind="vm.cupon.user.displayName"></span>
+      <span ng-if="!vm.cupon.user">Usuario eliminado</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.cupon.fecha_inicio | date : 'dd/MM/y'"></p>
+  <p class="lead" ng-bind="vm.cupon.fecha_fin | date : 'dd/MM/y'"></p>
+  <p class="lead" ng-bind="vm.cupon.soles"></p>
+  <p class="lead" ng-bind="vm.cupon.codigo"></p>
+  <p class="lead" ng-bind="vm.cupon.estado"></p>
+
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+

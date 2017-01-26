@@ -1,0 +1,177 @@
+
+  <div id="slider">
+      <div class="am">
+        <div id="contenedor">
+          <div class="texto-imagen">
+            <div class="imagen">
+                <img class="img_web" ng-src="{{vm.sliders.thumbnail_1}}" alt=""> 
+                <img class="img_mobil" ng-src="{{vm.sliders.thumbnail_1_mobil}}" alt="">
+            </div>
+          </div>
+          <div class="texto-imagen">
+            <div class="imagen">
+                <img class="img_web" ng-src="{{vm.sliders.thumbnail_2}}" alt="">
+                <img class="img_mobil" ng-src="{{vm.sliders.thumbnail_2_mobil}}" alt="">
+            </div>
+          </div>
+          <div class="texto-imagen">
+            <div class="imagen">
+                <img class="img_web" ng-src="{{vm.sliders.thumbnail_3}}" alt="">
+                <img class="img_mobil" ng-src="{{vm.sliders.thumbnail_3_mobil}}" alt="">
+            </div>
+          </div>
+          <div class="texto-imagen">
+            <div class="imagen">
+                <img class="img_web" ng-src="{{vm.sliders.imagenUrl}}" alt="">
+                <img class="img_mobil" ng-src="{{vm.sliders.imagenUrl_mobil}}" alt="">
+            </div>
+          </div>
+        </div>
+        <div id="bolitas"></div>
+      </div>
+      <button id="anterior"><span class="icon-flecha-izquierda"></span></button>
+      <button id="siguiente"><span class="icon-flecha-derecha">     </span></button>
+    </div>
+
+
+  <div id="subastas">
+      <div class="am">
+        <section class="envivo">
+          <h2>Subastas en vivo ({{vm.live.length}})</h2>
+          <!--  {{vm.responseTimeMs}} -->
+          <div class="moteadas">          
+            <article ng-repeat="item in vm.live">
+              <header>
+                <h3>
+                  <a href="javascript:;" ui-sref="homes.details({ detalle_subastaId: item._id })">{{item.titulo}}</a>
+                </h3>
+                <h4>precio de mercado<b> S/. {{item.producto.precio_normal}}</b></h4>
+              </header>
+
+              <div class="mini-slider">
+                <div class="imagenes">
+                  <a href="#" ui-sref="homes.details({ detalle_subastaId: item._id })" title="{{item.titulo}}">
+                    <img ng-src="{{item.producto.thumbnail_1}}" alt="#">
+                  </a>
+                  <a href="#" ui-sref="homes.details({ detalle_subastaId: item._id })" title="{{item.titulo}}">
+                    <img ng-src="{{item.producto.thumbnail_2}}" alt="#">
+                  </a>
+                  <a href="#" ui-sref="homes.details({ detalle_subastaId: item._id })" title="{{item.titulo}}">
+                    <img ng-src="{{item.producto.thumbnail_3}}" alt="#">
+                  </a>
+                </div>
+                <button>
+                  <span class="icon-flecha-izquierda"></span>
+                </button>
+                <button>
+                  <span class="icon-flecha-derecha"></span>
+                </button>
+              </div>
+
+
+              <div class="tipos">
+                <a class="rapidita" ng-show="item.tipo_subasta.nro_tipo === 1">
+                  <span class="icon-pentagono"></span><i class="icon-billete"></i>
+                  <span><b>Subasta estándar</b> Esta subasta no tiene restricción alguna</span>
+                </a>
+                <a class="rapidita" ng-show="item.tipo_subasta.nro_tipo === 6">
+                  <span class="icon-pentagono"></span><i class="icon-rayo"></i>
+                  <span><b>La rapidita</b> Ésta subasta no tiene reinicio de tiempo, quien llegue primero a ofertas 10 veces ¡GANA!</span>
+                </a>
+                <a class="cumpleanos" ng-show="item.tipo_subasta.nro_tipo === 3">
+                  <span class="icon-pentagono"></span><i class="icon-torta"></i>
+                  <span><b>La cumpleañera</b> Tendrás la posibilidad de pujar dos veces por el precio de una, ok no XD</span></a>
+                <a class="vistas" ng-show="item.tipo_subasta.nro_tipo === 7">
+                  <span class="icon-pentagono"></span><i class="icon-ojo"></i>
+                  <span><b>Un titulo interesante</b> No se me ocurre que poner acá, pero seguro despues se me ocurrirá, ¿o no?</span>
+                </a>
+                <a class="pelea" ng-show="item.tipo_subasta.nro_tipo === 5">
+                  <span class="icon-pentagono"></span><i class="icon-guantes"></i>
+                  <span><b>Muerte súbita</b> No hay limite de tiempo, el último que dé su puja, ganará si o si ¿que esperas? ¡PUJA!</span>
+                </a>
+                <div ng-init="vm.recordatorio();">
+                <a class="pelea" ng-if="vm.a === 1">
+                  <span class="icon-pentagono"></span><i class="icon-guantes"></i>
+                  <span><b>Recordatorio</b> Guarda tu subasta</span>
+                </a>
+                </div>
+              </div>
+
+              <span class="tiempo" ng-show="item.remainingLiveTime">{{item.remainingLiveTime | CommonFilter}}</span>
+              <span class="tiempo" ng-hide="item.remainingLiveTime || item.estado === 3">{{item.tiempo_restante + 1000 | CommonFilter}}</span>
+              <strong>S./ {{item.cant_pujas / 100}}</strong>
+              <button ng-show="item.estado === 1" ng-click="vm.pushAuction(item, vm.userdata)" ng-if="vm.auth===true" ng-disabled="vm.disableoffer">{{vm.ofertar}}</button>
+              <button ui-sref="login" ng-if="vm.auth===false">{{vm.ofertar}}</button>
+              <span class="ultimo" ng-if="item.ultima_oferta">{{item.ultima_oferta.username}}</span>
+              <span class="ultimo" ng-if="!item.ultima_oferta">NO EXISTEN OFERTAS AÚN</span>
+            </article>
+
+
+
+
+
+          </div><a href="#" ui-sref="homes.envivo" ng-show="vm.live.length>0" title="Ver todas las subastas en vivo" class="todas">Mira todas las subastas</a>
+        </section>
+        <hr>
+        <section class="destacadas">
+          <h2>Destacadas</h2>
+          <div class="limpias">
+
+            <article ng-repeat="item in vm.featured">
+              <a ui-sref="homes.details({ detalle_subastaId: item._id })" title="{{item.titulo}}">
+                <img ng-src="{{item.producto.imagenUrl}}" alt="{{item.titulo}}">
+              </a>
+              <header>
+                <h3>
+                  <a href="#" title="{{item.titulo}}">{{item.titulo}}</a>
+                </h3>
+                <h4>precio de mercado
+                  <b> s/.{{item.producto.precio_normal}}</b>
+                </h4>
+              </header>
+            </article>
+     
+          </div>
+        </section>
+        <hr class="nc">
+        <section class="proximas nc">
+          <h2>Proximas subastas<span>¡No te las pierdas!</span></h2>
+          <div class="cuadros">
+            <article ng-repeat="item in vm.next">
+              <header>
+                <h3><a href="#">{{item.descripcion}}</a></h3>
+              </header>
+              <div class="datos">
+                <ul>
+                  <li>32 gb</li>
+                  <li>color gold</li>
+                  <li>5.5 pulgadas</li>
+                  <li>13mpx. con flash</li>
+                </ul><b>Martes 17/05/16<span>12:00:00 pm</span></b>
+              </div>
+              <div class="imagen">
+                <img ng-src="{{item.producto.imagenUrl}}" alt="Iphone 6s">
+              </div>
+              <a href="#" title="#">Iphone 6S</a>
+            </article>
+     
+          </div><a ui-sref="homes.envivo" title="#" class="todas">Mira todas las subastas</a>
+        </section>
+        
+        <div class="promo-redes">
+          <h2> <span>Entérate de</span>Promociones y novedades<span>únicas en:</span></h2><a href="#" title="Facebook" class="icon-facebook"><span>Facebook </span></a><a href="#" title="Youtube" class="icon-youtube"><span>Youtube</span></a><a href="#" title="Instagram" class="icon-instagram"><span>Instagran</span></a>
+        </div>
+      </div>
+    </div> 
+
+<div class="container">
+
+
+    <script type="text/javascript" src="assets/js/slider.js"></script>
+
+       <script>
+      $('.menunav-colp').on('click', function(){
+        $(".menufloat").slideToggle( "slow", function() {
+        });
+      });
+    </script>

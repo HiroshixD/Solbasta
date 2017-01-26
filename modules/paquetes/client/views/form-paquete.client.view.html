@@ -1,0 +1,56 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Formulario para crear nuevo paquete para ventas</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+    <h1>{{vm.paquete._id ? 'Editar Paquete' : 'Nuevo Paquete'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.paqueteForm" class="form-horizontal" ng-submit="vm.save(vm.form.paqueteForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Nombre de paquete</label>
+          <input name="nombre" type="text" ng-model="vm.paquete.nombre" id="nombre" class="form-control" placeholder="Ingresa el nombre de tu paquete de soles" required>
+          <div ng-messages="vm.form.paqueteForm.nombre.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre del paquete es necesario, por favor ingresa un nombre válido.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="valor">Valor de paquete / en saldo</label>
+          <input type ="text" name="valor" data-ng-model="vm.paquete.valor" id="valor" class="form-control" placeholder="Ingresa el valor que el paquete recargará">
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="monto">Monto en Nuevos Soles</label>
+          <input type ="text" name="monto" data-ng-model="vm.paquete.monto" id="monto" class="form-control" placeholder="Ingresa el monto que el usuario pagará">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.paquete._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

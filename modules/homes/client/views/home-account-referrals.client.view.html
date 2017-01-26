@@ -1,0 +1,43 @@
+    <main id="mi-cuenta">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+          <ul>
+              <li><a ui-sref="homes.summary" title="#" class="icon-usuario">Resumen</a></li>
+              <li><a ui-sref="homes.settings" title="#" class="icon-editar">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" title="#" class="icon-marcador">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" title="#" class="icon-archivos">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" title="#" class="icon-copa">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" title="#" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" title="#" class="icon-usuarios activo">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li><a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis<span>Este es tu codigo<span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b></span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="invitados">
+          <h1><span>Invitados</span></h1>
+          <h2><span>Nombre de usuario</span><span>Nombre y apellido</span><span>Fecha de registro</span><span>Estado</span></h2>
+          <ul id="lista">
+            <li ng-repeat="item in vm.referrals">
+              <span>{{item.referral_nickname}}</span>
+              <span>{{item.referral_fullname}}</span>
+              <span>{{item.created | date :  'dd/MM/y' }}</span>
+              <span>{{item.referral_account_status === true ? 'Confirmado' : 'Pendiente'}}</span>
+            </li>
+          </ul>
+          <h1><span>Como sigo ganando solsazos</span></h1>
+          <p>Obtengo<b> 5 solsazos gratis</b> cada vez que invites o recomiendes a un amigo que se registro y compre solsazos.Tienes diferentes maneras de invitar a tus amigos, dale click a cada uno para seguir ganando.</p>
+          <p>
+            <button><span class="icon-facebook"></span><span>Publícalo en<b>Facebook</b></span></button>
+            <button><span class="icon-twitter"></span><span>Difúndelo en<b>Twitter</b></span></button>
+            <button><span class="icon-email"></span><span>Mándalo por<b>Correo	</b></span></button>
+            <button id="link-referido"><span class="icon-megafono"></span><span>Copia tu link</span><span>Copia tu link y mándalo<b>solbasta.com/register?ref={{vm.authentication.user.referral_code}}</b></span><span>pasa la voz con tu<b>link personal			</b></span></button>
+          </p>
+        </section>
+      </div>
+    </main>
+        <script type="text/javascript" src="assets/js/script.js">       </script>

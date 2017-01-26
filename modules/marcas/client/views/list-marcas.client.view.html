@@ -1,0 +1,43 @@
+<div id="content" class="content">
+     
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Nueva marca</h4>
+                        </div>
+                        <div class="panel-body">
+                           
+                         <section>
+                          <div class="page-header">
+                            <h1>Marcas</h1>
+                          </div>
+                          <div class="list-group">
+                            <a ng-repeat="marca in vm.marcas" ui-sref="marcas.view({ marcaId: marca._id })" class="list-group-item">
+                              <small class="list-group-item-text">
+                                Posted on
+                                <span ng-bind="marca.created | date:'mediumDate'"></span>
+                                by
+                                <span ng-if="marca.user" ng-bind="marca.user.displayName"></span>
+                                <span ng-if="!marca.user">Deleted User</span>
+                              </small>
+                              <h4 class="list-group-item-heading" ng-bind="marca.nombre"></h4>
+                              <p class="list-group-item-text" ng-bind="marca.estado"></p>
+                            </a>
+                          </div>
+                          <div class="alert alert-warning text-center" ng-if="vm.marcas.$resolved && !vm.marcas.length">
+                            No hay marcas registradas, por qué no <a ui-sref="marcas.create">registras una</a>?
+                          </div>
+                        </section>
+
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+

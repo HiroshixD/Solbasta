@@ -1,0 +1,49 @@
+<div id="content" class="content">
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Detalles de producto</h4>
+                        </div>
+                        <div class="panel-body">
+                            <section>
+                      <a ui-sref="productos.list"><i class="fa fa-reply-all"></i> VOLVER AL LISTADO</a>
+                                <div class="page-header">
+                                  Nombre de producto<h1 ng-bind="vm.producto.nombre"></h1>
+                                </div>
+                                <div class="pull-right">
+                                  <a class="btn btn-primary" ui-sref="productos.edit({ productoId: vm.producto._id })">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                  </a>
+                                  <a class="btn btn-primary" ng-click="vm.remove()">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                  </a>
+                                </div>
+                                <p>Precio normal</p>
+                                <p class="lead" ng-bind="vm.producto.precio_normal"></p>
+                                <p>Precio ofertado</p>
+                                <p class="lead" ng-bind="vm.producto.precio_oferta"></p>
+                                <p>Descripcion larga</p>
+                                <p class="lead" ng-bind="vm.producto.descripcion_larga"></p>
+                                <p>Descripcion corta</p>
+                                <p class="lead" ng-bind="vm.producto.descripcion_corta"></p>
+                                <p>Categoria</p>
+                                <p class="lead" ng-bind="vm.producto.categoria.nombre"></p>
+                                <p>Marca</p>
+                                <p class="lead" ng-bind="vm.producto.marca.nombre"></p>
+                                <p>Etiquetas</p>
+                                <p class="lead" ng-bind="vm.producto.tags"></p>
+                                <p>creado</p>
+                                <p class="lead" ng-bind="vm.producto.created"></p>
+                            </section>
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+

@@ -1,0 +1,71 @@
+	<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top" ng-controller="HeaderController as vm">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="/" target="_self" class="navbar-brand"><span class="navbar-logo"></span> SolBasta</a>
+					<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				
+				<!-- end mobile sidebar expand / collapse button -->
+			<ul class="nav navbar-nav" ng-if="vm.menu.shouldRender(vm.authentication.user);">
+
+      <!-- SI EXISTE AUTENTICACION MANDA LOS LI QUE YA ESTÁN DEFINIDOS -->
+<!--
+      <li ng-repeat="item in vm.menu.items | orderBy: 'position'" ng-if="item.shouldRender(vm.authentication.user);" ng-switch="item.type" ng-class="{ dropdown: item.type === 'dropdown' }" ui-sref-active="active" class="{{item.class}}" uib-dropdown="item.type === 'dropdown'">
+        <a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+        <ul ng-switch-when="dropdown" class="dropdown-menu">
+          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(vm.authentication.user);">
+            <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+          </li>
+        </ul>
+        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+      </li>-->
+    </ul>
+				<!-- begin header navigation right -->
+				  <ul class="nav navbar-nav navbar-right" ng-hide="vm.authentication.user">
+      <li ui-sref-active="active">
+      <!--MUESTRA SIGN IN Y SIGN UP -->
+        <a ui-sref="register">Registrarse</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ui-sref-active="active">
+        <a ui-sref="login">Iniciar Sesión</a>
+      </li>
+    </ul>
+  <!--USUAIRO NO LOGEADO -->
+
+
+<!-- USUARIO LOGEADO -->
+    <ul class="nav navbar-nav navbar-right" ng-show="vm.authentication.user">
+
+
+      <li class="dropdown" uib-dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button">
+          <img ng-src="{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="vm.authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+        <!-- ENVIAMOS LOS ITEMS AL LI DEL USUARIO AUTENTICADO -->
+          <li ui-sref-active="active" ng-repeat="item in vm.accountMenu.items">
+            <a ui-sref="{{item.state}}" ng-bind="item.title"></a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a ng-click="vm.signout();" href="#">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </li>
+
+      
+    </ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->

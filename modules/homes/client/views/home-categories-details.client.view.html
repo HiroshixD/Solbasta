@@ -1,0 +1,94 @@
+    <div id="subastas">
+      <div class="am">
+        <section class="envivo">
+          <h1>{{vm.nombrecategoria}}</h1>
+          <ul id="categorias">
+            <li ng-repeat="item in vm.categorias">
+              <a href="#" ng-click="vm.getAuctionsByCategorie(item._id)" title="#">{{item.nombre}}</a>
+            </li>
+          </ul>
+          <div id="filtro-categorias" class="select-especial">
+            <select name="por" ng-model="vm.order" ng-change="vm.getFilter(vm.order);">
+              <option value="" selected>Filtrar por:</option>
+              <option value="1">Subastas en Vivo</option>
+              <option value="2">Próximas subastas</option>
+              <option value="3">Subastas terminadas</option>
+            </select><span class="icon-flecha"></span>
+            <ul>
+              <li ng-click="vm.getFilter(1)">Subastas en Vivo</li>
+              <li ng-click="vm.getFilter(2)">Proximas subastas</li>
+              <li ng-click="vm.getFilter(3)">Subastas terminadas</li>
+            </ul>
+          </div>
+          <span ng-show="vm.subastas.length ===0">NO SE ENCONTRARON RESULTADOS</span>
+          <div class="moteadas">
+            <article ng-repeat="item in vm.subastas | orderBy : vm.orderby | filter: vm.filter">
+              <header>
+                <h3><a href="subastas-detalle-subasta.html">{{item.titulo}}</a></h3>
+                <h4>precio de mercado<b> s/.{{item.producto.precio_normal}}</b></h4>
+              </header>
+              <div class="mini-slider">
+                <div class="imagenes">
+                  <a href="item.html" title="Iphone 6S">
+                    <img ng-src="{{item.producto.thumbnail_1}}" ui-sref="homes.details({ detalle_subastaId: item._id })" alt="#">
+                  </a>
+                  <a href="item.html" title="Iphone 6S">
+                    <img ng-src="{{item.producto.thumbnail_2}}" ui-sref="homes.details({ detalle_subastaId: item._id })" alt="#">
+                  </a>
+                  <a href="item.html" title="Iphone 6S">
+                    <img ng-src="{{item.producto.thumbnail_3}}" ui-sref="homes.details({ detalle_subastaId: item._id })" alt="#">
+                  </a>
+                </div>
+                <button><span class="icon-flecha-izquierda"></span></button>
+                <button><span class="icon-flecha-derecha"></span></button>
+              </div>
+              <div class="tipos">
+                <a class="rapidita" ng-show="item.tipo_subasta.nro_tipo === 1">
+                  <span class="icon-pentagono"></span><i class="icon-billete"></i>
+                  <span><b>Subasta estándar</b> Esta subasta no tiene restricción alguna</span>
+                </a>
+                <a class="rapidita" ng-show="item.tipo_subasta.nro_tipo === 6">
+                  <span class="icon-pentagono"></span>
+                    <i class="icon-rayo"></i>
+                      <span>
+                        <b>La rapidita</b> Ésta subasta no tiene reinicio de tiempo, quien llegue primero a ofertas 10 veces ¡GANA!
+                      </span>
+                </a>
+                <a class="cumpleanos">
+                  <span class="icon-pentagono" ng-show="item.tipo_subasta.nro_tipo === 3"></span>
+                    <i class="icon-torta"></i>
+                      <span>
+                        <b>La cumpleañera</b> Tendrás la posibilidad de pujar dos veces por el precio de una, ok no XD
+                      </span>
+                </a>
+                <a class="vistas">
+                  <span class="icon-pentagono"></span>
+                    <i class="icon-ojo"></i>
+                      <span>
+                        <b>Un titulo interesante</b> No se me ocurre que poner acá, pero seguro despues se me ocurrirá, ¿o no?
+                      </span>
+                </a>
+                <a class="pelea" ng-show="item.tipo_subasta.nro_tipo === 5">
+                  <span class="icon-pentagono"></span>
+                    <i class="icon-guantes"></i>
+                      <span><b>Muerte súbita</b> No hay limite de tiempo, el último que dé su puja, ganará si o si ¿que esperas? ¡PUJA!
+                      </span>
+                </a>
+                </div>
+                <span class="tiempo">{{item.remainingTime | CommonFilter}}</span><strong>S/. 1.50</strong>
+              <button>Ofertar</button><span class="ultimo">verocn1093 </span>
+            </article>
+         
+       
+          </div>
+        </section>
+        <div class="navegacion">
+          <button>&lt;&lt; Anterior<span>Primera página</span></button>
+          <button>1</button>
+          <button class="activo">2</button>
+          <button>3</button>
+          <button>&gt;&gt; Siguiente<span>Última página         </span></button>
+        </div>
+      </div>
+    </div>
+        <script type="text/javascript" src="assets/js/script.js"></script>

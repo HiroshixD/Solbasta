@@ -1,0 +1,44 @@
+<div id="content" class="content">
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Lista de productos</h4>
+                        </div>
+                        <div class="panel-body">
+                           <section>
+                                <div class="page-header">
+                                  <h1>Slider Creados</h1>
+                                </div>
+                                <div class="list-group">
+                                  <a ng-repeat="producto in vm.productos" ui-sref="productos.viewslider({ productoId: producto._id })" class="list-group-item">
+                                    <small class="list-group-item-text">
+                                      Creado
+                                      <span ng-bind="producto.created | date:'mediumDate'"></span>
+                                      por
+                                      <span ng-if="producto.user" ng-bind="producto.user.displayName"></span>
+                                      <span ng-if="!producto.user">Deleted User</span>
+                                    </small>
+                                    <h4 class="list-group-item-heading" ng-bind="producto.nombre"></h4>
+                                    <img ng-src="{{producto.thumbnail_1}}" height="250" width="250"/>
+                                    <img ng-src="{{producto.thumbnail_2}}" height="250" width="250"/>
+                                    <img ng-src="{{producto.thumbnail_3}}" height="250" width="250"/>
+                                    <img ng-src="{{producto.imagenUrl}}" height="250" width="250"/>
+                                  </a>
+                                </div>
+                                <div class="alert alert-warning text-center" ng-if="vm.productos.$resolved && !vm.productos.length">
+                                  No hay productos aún, por qué no <a ui-sref="productos.create">creas uno</a>?
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+

@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'thorup';
+  src: url("../fonts/thorup/ThorupSansSmallCaps.ttf");
+}
+
+@font-face {
+  font-family: 'thorup-bold';
+  src: url("../fonts/thorup/ThorupSansBold.ttf");
+}
+@font-face {
+  font-family: 'raleway';
+  src: url("../fonts/raleway/Raleway-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'raleway-bold';
+  src: url("../fonts/raleway/Raleway-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'raleway-italic';
+  src: url("../fonts/raleway/Raleway-Italic.ttf");
+}

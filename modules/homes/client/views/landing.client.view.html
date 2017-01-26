@@ -1,0 +1,34 @@
+<div class="am"> 
+        <div class="anuncio">
+          <h2>Muy pronto</h2>
+          <h1>Con tan sólo<b><i> S/.</i>1</b> poddrás ganar los<span> mejores productos</span></h1>
+          <hr>
+        </div>
+        <div class="imagenes"><img src="assets/imagenes/page2_image4.png" alt="Iphone"></div>
+        <ul>
+          <li><i>1.</i><span>Registrate</span></li>
+          <li><i>2.</i><span>Compra monedas</span></li>
+          <li><i>3.</i><span>Oferta</span></li>
+          <li><i>4.</i><span>¡Gana! </span></li>
+        </ul>
+        <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" ng-class="vm.formclass" novalidate autocomplete="off">
+        <strong>¡Gracias!<span>Pronto te enterarás de más <b>novedades</b></span></strong>
+          <h2>¡Registrate y gana<b> 2 monedas <span>gratis!</span></b></h2>
+
+          <div class="recuadros">
+            <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.credentials.firstName" placeholder="Nombre" required>
+            <span class="icon-usuario"></span>
+
+
+            <input type="email" id="email" name="email" class="form-control" ng-model="vm.credentials.email" placeholder="Correo electrónico" value="" lowercase required>
+            <span class="icon-email"></span>
+
+            <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" placeholder="Contraseña" uib-popover-trigger="focus" password-validator required>
+
+            <input type="password" id="password" name="password" class="form-control" ng-model="vm.password2" placeholder="Repetir Contraseña" uib-popover-trigger="focus" password-validator required>
+
+            <input name="submit" value="Registrarse" type="submit">
+          </div>
+
+        </form>
+      </div>

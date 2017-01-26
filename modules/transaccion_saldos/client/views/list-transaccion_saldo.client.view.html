@@ -1,0 +1,21 @@
+<section>
+  <div class="page-header">
+    <h1>Transaccion_saldos</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="transaccion_saldo in vm.transaccion_saldos" ui-sref="transaccion_saldos.view({ transaccion_saldoId: transaccion_saldo._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="transaccion_saldo.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="transaccion_saldo.user" ng-bind="transaccion_saldo.user.displayName"></span>
+        <span ng-if="!transaccion_saldo.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="transaccion_saldo.title"></h4>
+      <p class="list-group-item-text" ng-bind="transaccion_saldo.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.transaccion_saldos.$resolved && !vm.transaccion_saldos.length">
+    No transaccion_saldos yet, why don't you <a ui-sref="transaccion_saldos.create">create one</a>?
+  </div>
+</section>

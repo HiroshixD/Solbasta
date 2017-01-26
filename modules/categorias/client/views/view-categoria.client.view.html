@@ -1,0 +1,45 @@
+<div id="content" class="content">
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Nueva categoría</h4>
+                        </div>
+                        <div class="panel-body">
+                  <section>
+           <a ui-sref="categorias.list"><i class="fa fa-reply-all"></i> VOLVER AL LISTADO</a>
+                      <div class="page-header">
+                        <h1 ng-bind="vm.categoria.nombre"></h1>
+                      </div>
+                      <div class="pull-right" ng-show="true">
+                        <a class="btn btn-primary" ui-sref="categorias.edit({ categoriaId: vm.categoria._id })">
+                          <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                        <a class="btn btn-primary" ng-click="vm.remove()">
+                          <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                      </div>
+                      <small>
+                        <em class="text-muted">
+                          Posted on
+                          <span ng-bind="vm.categoria.created | date:'mediumDate'"></span>
+                          by
+                          <span ng-if="vm.categoria.user" ng-bind="vm.categoria.user.displayName"></span>
+                          <span ng-if="!vm.categoria.user">Deleted User</span>
+                        </em>
+                      </small>
+                      <p class="lead" ng-bind="vm.categoria.estado"></p>
+                      <img ng-src="{{vm.categoria.imageURL}}"/>
+                  </section>
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

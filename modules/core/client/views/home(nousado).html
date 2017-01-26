@@ -1,0 +1,48 @@
+<div class="row">
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+      <div  class= "col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <div class="cont_subastas_destacadas">
+          <div class="subastas_destacadas">
+            <span class="title-subastas">SUBASTAS EN VIVO</span>
+            <span class="underline-title"></span>
+          </div>
+            <div class="row">
+              <div class= "col-xs-12 col-sm-3 col-md-3 col-lg-3 subasta-item" ng-repeat="item in vm.subastaslist" ng-show="item.destacado==false">
+                <h1>{{item.titulo}}</h1>
+                <span>Precio de mercado S/. {{item.producto.precio_normal}}</span>
+                <figure><img ng-src="{{item.producto.imagenUrl}}"></figure>
+                <p class="timer-item">{{vm.getRemaining(item.fecha_inicio)}}</p>
+                <p class="precio-item">S/. {{item.producto.precio_normal}}</p>
+                <div class="botonOfertar">OFERTAR</div>
+              </div>
+            </div>
+        </div>
+      </div>
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+</div>
+
+<hr>
+
+
+
+<div class="row">
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+      <div  class= "col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <div class="cont_subastas_destacadas">
+          <div class="subastas_destacadas">
+            <span class="title-subastas">DESTACADOS</span>
+            <span class="underline-title"></span>
+          </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 subastas-destacados" ng-repeat="item in vm.subastaslist" ng-show="item.destacado==true">
+                <figure><img ng-src="{{item.producto.imagenUrl}}"></figure>
+                <h1>{{item.titulo}}</h1>
+                <span>Precio de mercado S/. {{item.producto.precio_normal}}</span>
+                <p class="precio-item">S/. {{item.producto.precio_normal}}</p>
+                <span class="underline-title"></span>
+              </div>
+            </div>
+        </div>
+      </div>
+    <div  class= "col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+</div>

@@ -1,0 +1,58 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                             <h4 class="panel-title">Panel de Subastas </h4>
+                             
+                            
+                        </div>
+                        <div class="panel-body">
+                          
+                          <section>
+                          <a ui-sref="detalle_subastas.list"><i class="fa fa-reply-all"></i> VOLVER AL LISTADO</a>
+                            <div class="page-header">
+                              <h1 ng-bind="vm.detalle_subasta.titulo"></h1>
+                            </div>
+                            <div class="pull-right" ng-show="true">
+                              <a ng-show="!vm.detalle_subasta.winner" class="btn btn-primary" ui-sref="detalle_subastas.edit({ detalle_subastaId: vm.detalle_subasta._id })">
+                                <i class="glyphicon glyphicon-edit"></i>
+                              </a>
+                              <a ng-show="!vm.detalle_subasta.winner" class="btn btn-primary" ng-click="vm.remove()">
+                                <i class="glyphicon glyphicon-trash"></i>
+                              </a>
+                            </div>
+                            <p class="lead" ng-bind="vm.detalle_subasta.producto.nombre"></p>
+                            <img ng-src="{{vm.detalle_subasta.producto.imagenUrl}}" width="200" height="200"/>
+                          </section>
+                          <p><b>Descripción de subasta</b></p>
+                          <p class="lead" ng-bind="vm.detalle_subasta.descripcion"></p>
+                          <p><b>Fecha de inicio de la subasta</b></p>
+                          <p class="lead" ng-bind="vm.setLocale(vm.detalle_subasta.fecha_inicio) | date:'dd/MM/y'"></p>
+                          <p><b>Estado de envío</b></p>
+                          <p class="lead" ng-show="vm.detalle_subasta.shipping==true">Envío sin costo</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.shipping==false">El envío no es gratuito</p>
+                          <p><b>Monto final vendido</b></p>
+                          <p class="lead" ng-show="vm.detalle_subasta.precio_vendido==0">Aún no vendido</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.precio_vendido!==0">S/. {{vm.detalle_subasta.precio_vendido}}</p>
+                          <p><b>Estado de subasta</b></p>
+                          <p class="lead" ng-show="vm.detalle_subasta.estado==0">Inactiva - Cancelada</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.estado==1">Activa y en vivo</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.estado==2">Próxima</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.estado==3">Terminada</p>
+                          <p><b>Ganador de la subasta</b></p>
+                          <p class="lead" ng-show="vm.detalle_subasta.winner==null">No hay ganador</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.winner!==null">{{vm.detalle_subasta.winner.username}}</p>
+                          <p><b>Destacado?</b></p>
+                          <p class="lead" ng-show="vm.detalle_subasta.destacado==true">Si</p>
+                          <p class="lead" ng-show="vm.detalle_subasta.destacado!==true">No</p>                                          
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>

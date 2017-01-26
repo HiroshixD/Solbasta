@@ -1,0 +1,21 @@
+<section>
+  <div class="page-header">
+    <h1>Referrals</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="referral in vm.referrals" ui-sref="referrals.view({ referralId: referral._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="referral.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="referral.user" ng-bind="referral.user.displayName"></span>
+        <span ng-if="!referral.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="referral.title"></h4>
+      <p class="list-group-item-text" ng-bind="referral.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.referrals.$resolved && !vm.referrals.length">
+    No referrals yet, why don't you <a ui-sref="referrals.create">create one</a>?
+  </div>
+</section>

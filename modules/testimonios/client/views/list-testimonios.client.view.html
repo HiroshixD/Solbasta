@@ -1,0 +1,21 @@
+<section>
+  <div class="page-header">
+    <h1>Testimonios</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="testimonio in vm.testimonios" ui-sref="testimonios.view({ testimonioId: testimonio._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="testimonio.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="testimonio.user" ng-bind="testimonio.user.displayName"></span>
+        <span ng-if="!testimonio.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="testimonio.title"></h4>
+      <p class="list-group-item-text" ng-bind="testimonio.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.testimonios.$resolved && !vm.testimonios.length">
+    No testimonios yet, why don't you <a ui-sref="testimonios.create">create one</a>?
+  </div>
+</section>

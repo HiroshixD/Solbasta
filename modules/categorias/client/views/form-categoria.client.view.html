@@ -1,0 +1,71 @@
+<div id="content" class="content">
+     
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Nueva categoría</h4>
+                        </div>
+                        <div class="panel-body">
+                            <section>
+  <div class="page-header">
+    <h1>{{vm.categoria._id ? 'Edit Categoria' : 'Nueva Categoria'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.categoriaForm" class="form-horizontal" ng-submit="vm.save(vm.form.categoriaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="nombre">Nombre de categoría</label>
+          <input name="nombre" type="text" ng-model="vm.categoria.nombre" id="nombre" class="form-control" placeholder="Inserte el nombre..." required>
+          <div ng-messages="vm.form.categoriaForm.nombre.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre de categoría es obligatorio</p>
+          </div>
+        </div>
+<!--         <div class="form-group" show-errors>
+          <label class="control-label" for="imageURL">Imagen de categoría</label>
+          <input name="imageURL" type="text" ng-model="vm.categoria.imageURL" id="imageURL" class="form-control" placeholder="Inserte el imageURL..." required>
+          <div ng-messages="vm.form.categoriaForm.imageURL.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">La imagen de la categoría es obligatoria</p>
+          </div>
+        </div> -->
+          <section class="row">
+            <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-4">
+              <form class="signin form-horizontal">
+                <fieldset>
+                  <div class="form-group text-center">
+                    <img ng-src="{{vm.imageURL}}" class="img-thumbnail user-profile-picture">
+                  </div>
+                  <div class="text-center form-group" ng-hide="vm.uploader.queue.length">
+                    <span class="btn btn-default btn-file">
+                        Buscar imagen <input type="file" nv-file-select uploader="vm.uploader">
+                    </span>
+                  </div>
+                  <div class="text-center form-group" ng-show="vm.uploader.queue.length">
+                  </div>
+
+                </fieldset>
+              </form>
+            </div>
+          </section>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.categoria._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+

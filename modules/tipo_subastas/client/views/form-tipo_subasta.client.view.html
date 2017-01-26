@@ -1,0 +1,69 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">{{vm.tipo_subasta._id ? 'Editar el tipo de subasta' : 'Nuevo tipo de subasta'}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.tipo_subastaForm" class="form-horizontal" ng-submit="vm.save(vm.form.tipo_subastaForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="nombre">Nombre</label>
+          <input name="nombre" type="text" ng-model="vm.tipo_subasta.nombre" id="nombre" class="form-control" placeholder="Campo obligatorio" required>
+          <div ng-messages="vm.form.tipo_subastaForm.nombre.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre del tipo de subasta es obligatorio.</p>
+          </div>
+        </div>
+      <div class="form-group">
+          <label class="control-label" for="estado">Estado:</label>
+            <select name="estado" data-ng-model="vm.tipo_subasta.estado" id="estado" class="form-control">
+              <option value=1>Activo</option>
+              <option value=0>Inactivo</option>
+            </select>
+      </div>
+      <div class="form-group" show-errors>
+          <label class="control-label" for="icono">Url Icono</label>
+          <input name="icono" type="text" ng-model="vm.tipo_subasta.icono" id="icono" class="form-control" placeholder="Campo obligatorio" required>
+          <div ng-messages="vm.form.tipo_subastaForm.icono.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El url icono del tipo de subasta es obligatorio.</p>
+          </div>
+      </div>
+      <div class="form-group" show-errors>
+          <label class="control-label" for="descripcion">Descripcion</label>
+          <input name="descripcion" type="text" ng-model="vm.tipo_subasta.descripcion" id="descripcion" class="form-control" placeholder="Campo obligatorio" required>
+          <div ng-messages="vm.form.tipo_subastaForm.descripcion.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">La descripcion del tipo de subasta es obligatorio.</p>
+          </div>
+        </div>
+                     
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.tipo_subasta._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

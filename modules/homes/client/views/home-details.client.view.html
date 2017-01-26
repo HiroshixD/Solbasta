@@ -1,0 +1,123 @@
+    <main id="detalles-subasta">
+      <header class="am">
+        <div id="mini-slider">
+          <div id="imagenes">
+            <ul>
+              <li><img ng-src="{{vm.detalle_subasta.producto.thumbnail_1}}" alt="#"></li>
+              <li><img ng-src="{{vm.detalle_subasta.producto.thumbnail_2}}" alt="#"></li>
+              <li><img ng-src="{{vm.detalle_subasta.producto.thumbnail_3}}" alt="#"></li>
+            </ul>
+            <div id="grande">
+              <img ng-src="{{vm.detalle_subasta.producto.thumbnail_1}}" alt="#">
+              <img ng-src="{{vm.detalle_subasta.producto.thumbnail_2}}" alt="#">
+              <img ng-src="{{vm.detalle_subasta.producto.thumbnail_3}}" alt="#"></div>
+          </div>
+          <h3>{{vm.detalle_subasta.titulo}}<span>Precio del mercado<b> S/. {{vm.detalle_subasta.producto.precio_normal}}</b></span></h3><span>(Fotografías referenciales)</span>
+        </div>
+        <div id="subasta" ng-class="vm.auctionClass">
+          <!-- 1° Estado (Por defecto): No se agrega ninguna 'clase', ya que el primer estado vendría a ser la visualización de la subasta sin iniciar sesión y con la subasta con un tiempo mayor a 10 segundos.-->
+          <!-- 2° Estado (clase 'oferta'): Se está visualizando la subasta, habiendo iniciado sesión previamente, y con la subasta con un tiempo mayor a 10 segundos. [<div id="subasta" clase="oferta"]-->
+          <!-- 3° Estado (clase 'segundos-su'): Visualizando la subasta sin iniciar sesión, pero con un tiempo menor a 10 segundos. [<div id="subasta" clase="segundos-su"]-->
+          <!-- 4° Estado (clase 'segundos-cu'): Visualizando la subasta habiendo iniciado sesión, y con un tiempo menor a 10 segundos [<div id="subasta" clase="segundos-cu"]-->
+          <!-- 5° Estado (clase 'vendido'): Visualizando la subasta ya terminada, osea, q yá se gano el producto [<div id="subasta" clase="vendido"]-->
+          <!-- Extras: en conjunto a los estados se le puede agregar dos clases mas llamadas: 'recordatorio1' y 'recordatorio2', las cuales mostrarán dos recordatorios que solo se visualizarán dependiendo si el usuario alla elegido verlos o no.-->
+          <p>!Empieza la emoción! Recuerda que cuando el tiempo llegue a cero (00:00:00) el último en ofertar !GANA!
+            <button>Ya no quiero ver esto nunca</button>
+          </p>
+          <p>!El tiempo se ha reiniciado! Esto pasa cada vez que alguien más oferta.
+            <button>Ya no quiero ver esto nunca</button>
+          </p>
+          <h3> 
+            <b>Vendido</b>
+            <b ng-show="vm.timeRemaining && vm.detalle_subasta.estado !== 3">{{vm.timeRemaining + 500 | CommonFilter}}</b>
+            <span>S./ {{vm.detalle_subasta.cant_pujas / 100}}</span>
+            <i>
+              <span></span>
+              <span></span>
+              <span></span>
+            </i>
+          </h3>
+            <img ng-src="{{vm.detalle_subasta.ultima_oferta.profileImageURL}}" ng-show="vm.detalle_subasta.ultima_oferta.profileImageURL" alt="Avatar">
+            <img src="assets/imagenes/avatar.png" ng-show="!vm.detalle_subasta.ultima_oferta.profileImageURL" alt="Avatar">
+              <strong>{{vm.detalle_subasta.ultima_oferta.username}}</strong>
+               <button ng-hide="vm.recarga || vm.detalle_subasta.estado === 3" ng-if="vm.auth===true" ng-click="vm.pushAuction(vm.detalle_subasta, vm.userdata)">Oferta</button>
+
+              <a ui-sref="login" ng-show="!vm.authentication">Inicia Sesión</a>
+              <a ng-show="vm.detalle_subasta.estado === 2" ng-hide="!vm.authentication" href="#">Próximamente</a>
+          <b>Ganado</b>
+          <span>Con <b>cada oferta </b>el precio de la subasta <b>aumenta en S/.0.01</b></span>
+          <!--span verocn fué el usuario
+          b  ganador,
+          |  con un total de
+          b  9 oferta(s)    
+          -->
+        </div>
+        <div id="historial">
+          <h3>Historial de ofertas</h3>
+          <ul>
+            <li ng-repeat="item in vm.ofertas">{{item.usuario}}<b>S/. {{item.monto}}</b></li>
+            <!-- Need to be corrected -->
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+            <li>-<b>s/. -</b></li>
+          </ul>
+          <hr><a ui-sref="homes.envivo" href="#">Ir a las subastas en vivo</a>
+          <p>
+          <a ui-sref="homes.details({ detalle_subastaId: item._id })" title="{{item.titulo}}" ng-repeat="item in vm.live">
+            <img ng-src="{{item.producto.imagenUrl}}" alt="{{item.titulo}}">
+          </a>
+          </p>
+        </div>
+        <hr>
+      </header>
+      <section id="descripcion" class="am">
+        <h2>Descripcion del producto</h2>
+        <p>{{vm.detalle_subasta.producto.descripcion_larga}}</p>
+       <div class="video">
+          <iframe width="560" height="315" ng-src="{{vm.detalle_subasta.producto.youtube_url | trusted}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section id="especificaciones">
+        <div class="am">
+          <p><img ng-src="{{vm.detalle_subasta.producto.thumbnail_1}}" alt="#"></p>
+          <div class="texto subasta">
+            <h2>Especificaciones</h2>
+            <ul>
+      {{vm.detalle_subasta.producto.especificaciones}}
+            </ul>
+          </div>
+          <p><img ng-src="{{vm.detalle_subasta.producto.thumbnail_2}}" alt="#"></p>
+        </div>
+        <div class="extra subasta">
+          <div class="am">
+            <ul>
+              <li><span>Precio Inicial:</span> S/.0.00</li>
+              <li><span>Fecha y Hora de Inicio:</span>{{vm.detalle_subasta.start}}</li>
+              <li><span>Costo de Envio:</span> S/.0.00</li>
+              <li><span># de Subasta:</span># {{vm.detalle_subasta.numberid}}</li>
+              <li><span>Fecha de Cierre:</span>{{vm.detalle_subasta.fecha_inicio}}</li>
+              <li><span>Información de Entrega:</span> Entrega gratuita</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="text/javascript" src="assets/js/script.js"></script>

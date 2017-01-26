@@ -1,0 +1,49 @@
+
+
+ <div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                             <h4 class="panel-title">Vista tipo subasta</h4>
+                            
+                        </div>
+                        <div class="panel-body">
+                          
+                              <section>
+                                <div class="page-header">
+                                  <h1 ng-bind="vm.tipo_subasta.nombre"></h1>
+                                </div>
+                                <div class="pull-right" ng-show="vm.tipo_subasta.isCurrentUserOwner">
+                                  <a class="btn btn-primary" ui-sref="tipo_subastas.edit({ tipo_subastaId: vm.tipo_subasta._id })">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                  </a>
+                                  <a class="btn btn-primary" ng-click="vm.remove()">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                  </a>
+                                </div>
+                                <small>
+                                  <em class="text-muted">
+                                    Posted on
+                                    <span ng-bind="vm.tipo_subasta.created | date:'mediumDate'"></span>
+                                    by
+                                    <span ng-if="vm.tipo_subasta.user" ng-bind="vm.tipo_subasta.user.displayName"></span>
+                                    <span ng-if="!vm.tipo_subasta.user">Deleted User</span>
+                                  </em>
+                                </small>
+                                <p>Breve descripcion</p>
+                                <p class="lead" ng-bind="vm.tipo_subasta.descripcion"></p>
+                                
+                                <p ></p>
+                              </section>
+                        
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>

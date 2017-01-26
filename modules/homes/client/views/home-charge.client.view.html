@@ -1,0 +1,198 @@
+    <script type="text/javascript" src='assets/landing/culqi.js'></script>
+    <script type="text/javascript">
+        // Recibimos Token del Culqi.js
+    function culqi() {
+        if (Culqi.token) {
+          // Imprimir Token
+          localStorage.culqi = JSON.stringify(Culqi.token);
+        window.location.replace("/charge/success");
+        }
+
+        else{
+          // Hubo un problema...
+          // Mostramos JSON de objeto error en consola
+          console.log(Culqi.error);
+          alert("Culqi.error.mensaje");
+        }
+
+    };
+    </script>
+
+
+ <main id="compra-solsazos">
+      <div class="am">
+        <h1>Compra solsazos</h1>
+        <p>Tenemos diferentes combos para que escojas los que prefieres.<span> Puedes hacer combinaciones,</span> y comprar todos los combos que desees, en una misma compra.</p>
+        <ol>
+          <li><b>1.</b>
+            <h2>Elige tu(s) combo(s)</h2>
+            <div><strong>Cupón</strong> Si tienes un cupón ingresalo aquí.
+              <form>
+                <input type="text" value="" placeholder="Ingresa el código de tu cupón" ng-model="vm.codigoCupon">
+                <input type="submit" value="Aplicar" ng-click="vm.aplicarCupon(vm.codigoCupon);">
+              </form>
+            </div>
+            <ul>
+
+              <li>
+                <h3> 
+                  <span> <b>10</b>soles</span>
+                  <span class="icon-pentagono"></span></h3>
+                  <p><span>Combo de </span><strong>
+                  <label id="10">10 solzasos</label>
+                  </strong><b><price id="13.90">S/ 13.90</price></b></p>
+                  <p>Cantidad
+                  <select>
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button id="agregar">Agregar</button>
+              </li>
+
+
+              <li>
+                <h3> <span> <b>25</b>soles</span><span class="icon-pentagono"></span></h3>
+                <p><span>Combo de </span><strong>
+                <label id="25">25 solzasos</label>
+                </strong><b>
+                <price id="33.30">S/ 33.30</price>
+                </b></p>
+                <p>Cantidad
+                  <select name="cantidad">
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button id="agregar">Agregar</button>
+              </li>
+
+              <li>
+                <h3> <span> <b>40</b>soles</span><span class="icon-pentagono"></span></h3>
+                <p><span>Combo de </span><strong>
+                <label id="40">40 solzasos</label>
+                </strong><b>
+                <price id="50.90">S/ 50.90</price>
+                </b></p>
+                <p>Cantidad
+                  <select name="cantidad">
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button>Agregar   </button>
+              </li>
+
+              <li>
+                <h3> <span> <b>60</b>soles</span><span class="icon-pentagono"></span></h3>
+                <p><span>Combo de </span><strong>
+                <label id="60">60 solzasos</label>
+                </strong><b>
+                <price id="72.60">S/ 72.60</price>
+                </b></p>
+                <p>Cantidad
+                  <select name="cantidad">
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button id="agregar">Agregar</button>
+              </li>
+
+
+              <li>
+                <h3> <span> <b>75</b>soles</span><span class="icon-pentagono"></span></h3>
+                <p><span>Combo de </span><strong>
+                <label id="75">75 solzasos</label>
+                </strong><b>
+                <price id="86.30">S/ 86.30</price>
+                </b></p>
+                <p>Cantidad
+                  <select name="cantidad">
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button id="agregar">Agregar</button>
+              </li>
+
+              <li>
+                <h3> <span> <b>100</b>soles</span><span class="icon-pentagono"></span></h3>
+                <p><span>Combo de </span><strong>
+                <label id="100">100 solzasos</label>
+                </strong><b>
+                <price id="100.00">S/ 100.00</price>
+                </b></p>
+                <p>Cantidad
+                  <select name="cantidad">
+                    <option value=1 selected>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                  </select><span class="icon-flecha"></span><span>Agrega el (los) combo(s) a tu compra</span>
+                </p>
+                <button id="agregar">Agregar</button>
+              </li>
+
+
+            </ul>
+          </li>
+          <li><b>2.</b>
+            <h2>Verifica tu compra</h2>
+            <div id="agregados">
+              <span>Agregados</span>
+              <span>Cantidad</span>
+              <span>Precio por combos</span>
+              <span>Acciones</span>
+              
+                <ul id='total'>
+
+                </ul>
+              <span id="totalcombo"></span>
+              <span id="cantidadcombo"></span>
+              <span id="preciototal"></span>
+            </div>
+            <hr>
+          </li>
+          <li><b>3.</b>
+            <h2>Elige tu metodo de pago</h2>
+            <ul>
+              <li>
+                <input type="radio" name="metodo" id="tarjeta">
+                <label for="tarjeta" onclick="showCardButton();"><span>Paga con Tarjeta</span></label>
+              </li>
+              
+              <li style="display:none;">
+                <input type="radio" name="metodo" id="efectivo">
+                <label for="efectivo" onclick="showPaypalButton();"><span><span>Paga con paypal</span><span>Paga en tu banco preferido.<span> Con este método de pago adquirirás un código, con el que podrás acercarte al banco de tu preferencia y pagar en efectivo.</span></span></span></label>
+              </li>
+
+              <li>
+                <input type="radio" name="metodo" id="efectivo">
+                <label for="efectivo"><span><span>Paga en efectivo</span><span>Paga en tu banco preferido.<span> Con este método de pago adquirirás un código, con el que podrás acercarte al banco de tu preferencia y pagar en efectivo.</span></span></span></label>
+              </li>
+
+            </ul>
+          </li>
+        </ol>
+        <p id="payment">
+          <input type="checkbox" value="pagar" id="pagar">
+          <label for="pagar" onclick="getTerminos();">He leido y acepto los 
+          <a href="#" title="Terminos y condiciones" onclick="getTerminos();">Terminos y condiciones</a></label>
+          <button id="culqipayment" class='bpagar' onclick="culqiPago();">Pagar</button>
+          <button id="paypalpayment" class='bpagar' onclick="paypalPago();">Pagar</button>
+        </p>
+
+      </div>
+    </main>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+
+
+
+
+
+

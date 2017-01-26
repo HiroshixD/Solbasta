@@ -1,0 +1,148 @@
+    <div id="content" class="content">
+      <!-- begin page-header -->
+      <h1 class="page-header">Panel de búsqueda <div ng-show="vm.resultados"><small>{{vm.resultados}} coincidencias encontradas</small></div></h1>
+      <!-- end page-header -->
+      
+      <!-- begin row -->
+      <div class="row">
+          <!-- begin col-12 -->
+          <div class="col-md-12">
+              <div class="result-container">
+                  <form ng-submit="vm.getUsername(vm.text)">
+                        <div class="input-group m-b-20">
+                            <input type="text" ng-model="vm.text" class="form-control input-white" placeholder="Ingresa el nickname" />
+                            <div class="input-group-btn">
+                                <input type="submit" value="Buscar" class="btn btn-inverse"><i class="fa fa-search"></i> 
+                            </div>
+                        </div>   
+                  </form>
+
+                        <div class="dropdown pull-left">
+                            <a href="javascript:;" class="btn btn-white btn-white-without-border dropdown-toggle" data-toggle="dropdown">
+                                Filtrar por <span class="caret m-l-5"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="javascript:;">Fecha de registro</a></li>
+                                <li><a href="javascript:;">Subastas ganadas</a></li>
+                                <li><a href="javascript:;">Saldo Recargado</a></li>
+                            </ul>
+                        </div>
+
+
+
+                        <ul class="result-list">
+
+                            <li ng-repeat="item in vm.users">
+                                <div class="result-image">
+                                    <a href="javascript:;">
+                                    <img ng-src="{{item.profileImageURL}}"/>
+                                    </a>
+                                </div>
+                                <div class="result-info">
+                                    <h4 class="title"><a href="javascript:;">{{item.firstName}} {{item.lastName}}</a></h4>
+                                    <p class="location">Fecha de registro: {{item.created | date :  "dd/MM/y" }}</p>
+                                    <p class="desc">
+                                        Estado de cuenta: {{item.status === 1 ? 'Activo' : 'Baneado' }}                                                                                                                                                                                                                                                          
+                                    </p>
+                                    <div class="btn-row">
+                                        <a href="javascript:;" ng-show = "item.status === 1" data-toggle="tooltip" data-container="body" data-title="Analytics"><i ng-click="vm.getModalData(item)" data-toggle="modal" data-target="#confirmBan" class="fa fa-fw fa-user-times"  title="Banear a este usuario"></i>
+                                        </a>
+                                        <a href="javascript:;" ng-show = "item.status === 2" data-toggle="tooltip" data-container="body" data-title="Analytics"><i class="fa fa-fw fa-user" ng-click="vm.getModalData(item)" data-toggle="modal" data-target="#confirmUnban" title="Desbanear a este usuario"></i>
+                                        </a>
+                                        <a href="javascript:;" data-toggle="tooltip" data-container="body" data-title="Tasks"><i  class="fa fa-fw fa-usd"  title="Recargar soles"  data-toggle="modal" data-target="#modalCharge" ng-click="vm.getModalData(item)"></i></a>
+                                    </div>
+                                </div>
+                                <div class="result-price">
+                                    {{item.username}} <small> MONTO TOTAL RECARGADO</small>
+                                    <a href="javascript:;" class="btn btn-inverse btn-block">Ver perfil</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+          </div>
+          <!-- end col-12 -->
+      </div>
+      <!-- end row -->
+    </div>
+
+     <!-- Modal -->
+  <div class="modal fade" id="modalCharge" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Recarga de saldo para -  {{vm.data.firstName}} {{vm.data.lastName}}</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+
+            <div class="form-group">
+              <label for="pwd">Username</label>
+              <h4>{{vm.data.username}}</h4>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Tipo de Recarga</label>
+              <p>Recarga de saldo manual - Admin a User</p>
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Tipo</label>
+              <p>Crédito Adicional para saldo</p>
+            </div>
+
+             <div class="form-group">
+              <label for="pwd">Monto de Soles</label>
+              <p><input type="text" class="form-control" ng-model="vm.monto"/></p>
+            </div>
+
+            <div class="form-group">
+              <label for="pwd">Identificador de Transacción (voucher)</label>
+              <p><input type="text" class="form-control" ng-model="vm.descripcion"/></p>
+            </div>
+
+            <div class="form-group">
+            <button class="btn btn-success" ng-click="vm.chargeBalance(vm.data._id)">Confirmar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<div class="modal fade" id="confirmBan" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Banear usuario</h4>
+        </div>
+        <div class="modal-body">
+          <p>Estás Segur@ de Banear a {{vm.data.username}}</p>
+          <p><button class="btn btn-success" ng-click="vm.banAccount(vm.data._id);">Si</button>
+          <button class="btn btn-warning" data-dismiss="modal">No</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal fade" id="confirmUnban" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">desbanear usuario</h4>
+        </div>
+        <div class="modal-body">
+          <p>Estás Segur@ de desbanear a {{vm.data.username}}</p>
+          <p><button class="btn btn-success" ng-click="vm.unbanAccount(vm.data._id);">Si</button>
+          <button class="btn btn-warning" data-dismiss="modal">No</button></p>
+        </div>
+      </div>
+    </div>
+  </div>
+

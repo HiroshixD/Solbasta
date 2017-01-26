@@ -1,0 +1,52 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Cupones creados</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+    <h1>Cupones</h1>
+  </div>
+
+  <div class="list-group" role="button">
+    <div  ng-repeat="cupon in vm.cupones" ui-sref="cupones.view({ cuponId: cupon._id })" class="list-group-item col-md-3">
+      <small class="list-group-item-text">
+        Cupon creado el
+        <span ng-bind="cupon.created | date: 'dd/MM/y'"></span>
+        por
+        <span ng-if="cupon.user" ng-bind="cupon.user.displayName"></span>
+        <span ng-if="!cupon.user">Lo sentimos, este usuario fue eliminado</span>
+      </small>
+      fecha inicio: 
+      <strong><h4 class="list-group-item-heading" ng-bind="cupon.fecha_inicio | date : 'dd/MM/y'"></h4></strong>
+      fecha fin:
+      <strong><p class="list-group-item-text" ng-bind="cupon.fecha_fin | date : 'dd/MM/y'"></p></strong>
+      Soles de premio:
+      <strong><p class="list-group-item-text" ng-bind="cupon.soles"></p></strong>
+      codigo de cupon:
+      <strong><p class="list-group-item-text" ng-bind="cupon.codigo"></p></strong>
+      estado de cupon:
+      <strong><p class="list-group-item-text" ng-if="cupon.estado === 1">Este cupon ya fue activado</p></strong>
+      <strong><p class="list-group-item-text" ng-if="cupon.estado === 0">Este todavia no ha sido activado</p></strong>
+    </div>
+  </div>
+
+  <div class="alert alert-warning text-center" ng-if="vm.cupones.$resolved && !vm.cupones.length">
+    No has creado ningún cupon aún, por qué no <a ui-sref="cupones.create">creas uno</a>?
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>

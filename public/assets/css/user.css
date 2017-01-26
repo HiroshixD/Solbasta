@@ -1,0 +1,126 @@
+.menu-user{
+	background-color: #262123;
+	padding: 40px 0px 40px 0px;
+	margin: 0px;
+}
+
+#submenu-user{
+	margin: 0px;
+	padding: 0px;
+}
+
+#submenu-user li{
+	list-style: none;
+	font-family: raleway;
+	
+}
+
+#submenu-user li a{
+	color: #fff;
+	padding: 7px 0px 7px 20px;
+	margin: 0px;
+	display: block;
+}
+
+#submenu-user li:hover{
+	background-color: #F2C531;
+}
+
+/*TICKET*/
+.container-codigo-user{
+	width: 70%;
+	display: block;
+	margin: 50px auto 50px auto;
+}
+.codigo-user-block{
+	background-color: #fff;
+	padding: 10px;
+}
+
+.codigo-user {
+	background: url('../img/sprite.png') no-repeat 46.196% 21.905%;
+	width: 92px;
+	height: 24px;
+	display: block;
+	margin: auto;
+	text-align: center;
+	padding-top: 2px;
+}
+
+.codigo{
+	font-weight: bold;
+	color: #F2C531;
+	font-size: 13px;
+
+}
+
+.descrip-codigo{
+	display: block;
+	text-align: center;
+	font-family: raleway;
+	font-size: 11px;
+	font-style: italic;
+	padding: 5px;
+}
+
+#submenu-codigo-user{
+	margin: 10px auto 10px auto;
+	padding: 0px;
+}
+
+#submenu-codigo-user li .active{
+	color: #F2C531;	
+}
+
+#submenu-codigo-user li{
+	list-style: none;
+	color: #fff;
+}
+
+#submenu-codigo-user li a{
+	font-family: raleway;
+	font-size: 12px;
+	color: #fff;
+}
+
+#submenu-codigo-user li a:hover{
+	color: #F2C531;	
+}
+
+.table-head{
+	background-color: #EFB632;
+	color: #707367;
+}
+
+.table{
+	font-weight: normal !important;
+}
+
+.table-user-body tr:nth-child(even) > th{  
+  color: #EFB632;
+  font-weight: normal;
+}
+
+.bloque-substGanada{
+	height: 120px;
+	margin-bottom: 10px;
+	border: solid 2px #AAA57D;
+}
+
+.container-user h1{
+	font-family: thorup;
+	color: #707367;
+	margin: 0px;
+	padding: 0px;
+	font-size: 50px;
+}
+
+.body-user{
+	background-color: #F2BE2A;
+	padding: 20px;
+}
+
+.footer-user{
+	background-color: #262123;
+	padding: 20px;
+}

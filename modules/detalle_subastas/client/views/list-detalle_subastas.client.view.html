@@ -1,0 +1,114 @@
+      <div id="content" class="content">
+
+      <!-- begin page-header -->
+      <h1 class="page-header">Filtrar resultados</h1>
+    
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="vm.getListOfAuctions(1);">Últimas 20 subastas en vivo</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="vm.getListOfAuctions(2)">Últimas 20 subastas próximas</button>
+  </div>
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default" ng-click="vm.getListOfAuctions(3)">Últimas 20 subastas terminadas</button>
+  </div>
+</div>
+</br>
+<h4 ng-show="vm.detalle_subastas.length === 0">No se encontraron resultados</h4>
+      <!-- end page-header -->
+      
+      <!-- begin row -->
+      <div class="row">
+          <!-- begin col-12 -->
+          <div class="col-md-12">
+              <div class="result-container">
+                <!--  <div class="input-group m-b-20">
+                            <input type="text" class="form-control input-white" placeholder="Escribe texto a filtrar" />
+                            <div class="input-group-btn">
+                                <button type="button" class="btn btn-inverse"><i class="fa fa-search"></i> Filtrar</button>
+
+                            </div>
+                        </div> -->
+             <label ng-show="vm.terminadas">
+              <input type="checkbox" ng-model="vm.filtro" ng-click="vm.filtrar();" /><b>Filtrar por no pagados</b></label>
+                        <ul class="result-list">
+
+                            <li ng-repeat="detalle_subasta in vm.detalle_subastas | filter:vm.search">
+                                <div class="result-image">
+                                    <a href="javascript:;" ui-sref="detalle_subastas.view({ detalle_subastaId: detalle_subasta._id })"><img ng-src="{{detalle_subasta.producto.imagenUrl}}" alt="" /></a>
+                                </div>
+                                <div class="result-info">
+                                    <h4 class="title">
+                            <a href="javascript:;" ui-sref="detalle_subastas.view({ detalle_subastaId: detalle_subasta._id })">{{detalle_subasta.titulo}}</a>
+                            </h4>
+
+
+                                    <p class="location">Fin de la subasta {{vm.setLocale(detalle_subasta.fecha_inicio) | date:'dd/MM/yyyy'}}                                                                                                                                            </p>
+                                    <p class="desc">
+                                        {{detalle_subasta.descripcion}} 
+                                    </p>
+                                 <div ng-show="detalle_subasta.estado === 3 && detalle_subasta.estado_envio === 0 && vm.terminadas" class="alert alert-danger" role="alert">Ésta subasta no ha sido entregada ni pagada, click
+                                    <a href="#" ng-click="vm.payAndSend(detalle_subasta._id)">Aqui</a> para confirmar su entrega</div>
+                                 <div ng-show="detalle_subasta.estado === 3 && detalle_subasta.estado_envio === 1 && vm.terminadas" class="alert alert-success" role="alert">Ésta subasta fue entregada satisfactoriamente al usuario ganador...</div>
+                                </div>
+                                <div class="result-price" ng-hide="vm.terminadas">
+                                    S/. {{detalle_subasta.producto.precio_normal}}<small>Precio de mercado</small>
+                                    <a href="javascript:;" class="btn btn-inverse btn-block" ui-sref="detalle_subastas.view({ detalle_subastaId: detalle_subasta._id })">Ver Detalles</a>
+                                </div>
+                                 <div class="result-price" ng-show="vm.terminadas">
+                                    S/. {{detalle_subasta.precio_vendido}}<small>Precio vendido</small>
+                                    <a href="#" ng-click="vm.getWinnerData(detalle_subasta.ultima_oferta._id);" class="btn btn-inverse btn-block" data-toggle="modal" data-target="#ganador">Ubicacion de entrega</a>
+                                </div>
+                            </li>
+
+                        </ul>
+
+
+
+                    </div>
+          </div>
+          <!-- end col-12 -->
+      </div>
+      <!-- end row -->
+    </div>
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div id="ganador" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Datos del ganador de la subasta: <b>{{vm.dataUser[0].user.displayName}} - {{vm.dataUser[0].user.telefono}}</b></h4>
+      </div>
+      <div class="modal-body">
+      <h2>Datos de domicilio</h2>
+        <b>Departamento</b><p>{{vm.dataUser[0].direccion.departamento}}</p>
+        <b>Provincia</b><p>{{vm.dataUser[0].direccion.provincia}}</p>
+        <b>Distrito</b><p>{{vm.dataUser[0].direccion.distrito}}</p>
+        </br>
+        <b>Calle</b><p>{{vm.dataUser[0].direccion_calle}}</p>
+        <b>Referencia de Calle</b><p>{{vm.dataUser[0].direccion_referencia}}</p>
+        <b>Destinatario</b><p>{{vm.dataUser[0].direccion_destinatario}}</p>
+
+
+      <h2>Otros datos de entrega</h2>
+        <b>Departamento</b><p>{{vm.dataUser[0].entrega.departamento}}</p>
+        <b>Provincia</b><p>{{vm.dataUser[0].entrega.provincia}}</p>
+        <b>Distrito</b><p>{{vm.dataUser[0].entrega.distrito}}</p>
+        </br>
+        <b>Calle</b><p>{{vm.dataUser[0].entrega_calle}}</p>
+        <b>Referencia de Calle</b><p>{{vm.dataUser[0].entrega_referencia}}</p>
+        <b>Destinatario</b><p>{{vm.dataUser[0].entrega_destinatario}}</p>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>

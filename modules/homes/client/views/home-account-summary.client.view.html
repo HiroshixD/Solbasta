@@ -1,0 +1,218 @@
+    <main id="mi-cuenta">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+          <ul>
+              <li><a ui-sref="homes.summary" title="#" class="icon-usuario activo">Resumen</a></li>
+              <li><a ui-sref="homes.settings" title="#" class="icon-editar">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" title="#" class="icon-marcador">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" title="#" class="icon-archivos">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" title="#" class="icon-copa">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" title="#" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" title="#" class="icon-usuarios">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li>
+              <a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis
+                <span>Este es tu codigo
+                  <span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>
+                  Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b>
+                </span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="resumen">
+          <h1><span>Resumen</span></h1>
+          <div class="desarrollo"><a href="#" ui-sref="homes.settings" title="Editar" class="icon-editar">Editar</a><img src="assets/imagenes/avatar.png" alt="Avatar" id="avatar">
+            <h2>{{vm.authentication.user.username}}<span>{{vm.authentication.user.displayName}}</span><span>{{vm.authentication.user.email}}</span></h2>
+            <ul>
+              <li><span class="icon-telefono"></span>Numero de contacto<span>{{vm.authentication.user.telefono}}</span></li>
+              <li><span class="icon-megafono"></span>Codigo 'Gana Solsazos'<span>{{vm.authentication.user.referral_code}}</span></li>
+              <li><span class="icon-marcador"></span>Direccion de entrega<span>Calle mi direccion 123, mi distrito</span></li>
+            </ul>
+            <p id="iconos" class="accesos-directos">
+              <button><span class="icon-archivos2"></span></button>
+              <button><span class="icon-play"></span></button>
+              <button><span class="icon-camara"></span></button>
+              <button><span class="icon-reloj"></span></button>
+              <button><span class="icon-regalo"></span></button>
+            </p>
+          </div>
+          <ul class="numeros">
+            <li><span>Tienes</span><span ng-bind="$root.saldoglobal"></span><span>Solzasos</span><span>para ofertar y ganar</span>
+            <a ui-sref="homes.charge" href="#" title="Compra y gana">Compra y gana</a></li>
+            <li ui-sref="homes.won" href="#"><span><img src="assets/imagenes/proxima1.png" alt="Última subasta ganada"></span><span><span>{{vm.win}}</span><span><span>Subasta(s)</span><span>ganada(s)</span></span></span></li>
+            <li><span><img src="assets/imagenes/terminadas/2.png" alt="Última subasta ganada" class="sepia"></span><span><span>0</span><span><span>Subasta(s)</span><span>por pagar</span></span></span></li>
+            <li><span>{{vm.count}}</span><span>invitados pendientes</span><a href="#" title="Invita más amigos">Invita mas amigos</a></li>
+          </ul>
+          <div id="secciones">
+            <section class="suscripcion">
+              <h2>Mi suscripción</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article class="accion">
+                    <h3 ng-show="vm.authentication.user.suscriptionState === true">Si no deseas recibir más promociones en tu correo electrónico, por favor, da click aquí:</h3>
+                    <button ng-show="vm.authentication.user.suscriptionState === true" ng-click="vm.manageSuscription();">Cancelar suscripción</button>
+                    <h3 ng-show="vm.authentication.user.suscriptionState === false">Deseas recibir más promociones en tu correo electrónico?, por favor, da click aquí:</h3>
+                    <button ng-show="vm.authentication.user.suscriptionState === false" ng-click="vm.manageSuscription();">Activar suscripción</button>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <section class="videos">
+              <h2>Mis Videos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Tesminio de</span> Monopoly 1</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Tesminio de</span> Monopoly 2</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Tesminio de</span> Monopoly 3</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Tesminio de</span> Monopoly 4</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Tesminio de</span> Monopoly 5</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <div class="imagen"><span class="icon-play"></span></div>
+                    <div class="texto">
+                      <h3>Agrega un video<span>y gana solsazos</span></h3><a href="#" title="#">Sube un video</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="fotos">
+              <h2>Mis Fotos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 1</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 2</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 3</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 4</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 5</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <div class="imagen"><span class="icon-camara"></span></div>
+                    <div class="texto">
+                      <h3>Agrega una foto<span>y gana solsazos</span></h3><a href="#" title="#">Sube una foto</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="recordatorios" ng-init="vm.getAllReminders();">
+              <h2>Mis recordatorios</h2>
+              <h1 ng-show="vm.reminders.length === 0">NO HAS PROGRAMADO NINGUN RECORDATORIO</h1>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article ng-repeat="item in vm.reminders">
+                    <button> <span class="icon-equis" ng-click="vm.removeReminderById(item._id);"></span>	Eliminar</button>
+                    <div class="imagen"><img ng-src="{{item.subasta.producto.thumbnail_1}}"></div>
+                    <div class="texto">
+                      <p>
+                        <time><b></b>{{item.subasta.fecha_inicio | date: 'dd/MM/y'}}</time>{{item.subasta.fecha_inicio | date: 'hh:mm:ss a'}}
+                      </p>
+                      <h3>{{item.subasta.titulo |  limitTo: 12}}....</h3>
+                      <h4>precio de mercado<b> s/.{{item.subasta.producto.precio_normal}}</b></h4><a ui-sref="homes.details({ detalle_subastaId: item.subasta._id })"href="#" title="#">Descripción</a>
+                    </div>
+     
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="regalos">
+              <h2>Mis Regalos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><span class="icon-facebook"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-twitter"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-instagram"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}	</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-facebook"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}	</b>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <h3><span>No tienes regalos</span>Ve a nuestros fan page</h3>
+                    <p><a href="#" title="Facebook" class="icon-facebook"><span>Facebook </span></a><a href="#" title="Instagram" class="icon-instagram"><span>Instagran</span></a><a href="#" title="Youtube" class="icon-twitter"><span>Twitter</span></a></p>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha">			</span></button>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+
+    <script type="text/javascript" src="assets/js/script.js"></script>

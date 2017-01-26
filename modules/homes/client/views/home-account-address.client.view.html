@@ -1,0 +1,128 @@
+    <main id="mi-cuenta">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+            <ul>
+              <li><a ui-sref="homes.summary" title="#" class="icon-usuario">Resumen </a></li>
+              <li><a ui-sref="homes.settings" title="#" class="icon-editar">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" title="#" class="icon-marcador activo">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" title="#" class="icon-archivos">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" title="#" class="icon-copa">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" title="#" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" title="#" class="icon-usuarios">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li><a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis<span>Este es tu codigo<span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b></span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="mis-direcciones">
+          <h1><span>Mis direcciones</span></h1>
+          <div class="desarrollo">
+            <div class="resumen">
+            <i class="icon-marcador"></i>
+            <i class="icon-camion"></i>
+              <p><span class="icon-marcador">Mi dirección</span>
+              <span class="icon-lapiz2 activo">{{vm.direccion.direccion_calle}}</span>
+              </p>
+              <p>
+              <span class="icon-camion">Dirección de entrega</span>
+              <span class="icon-lapiz2">{{vm.direccion.entrega_calle}}</span></p>
+              <button ng-click="vm.saveChanges()">Guardar cambios</button>
+            </div>
+            <div class="formularios">
+              <form>
+                <h3><i class="icon-marcador"></i>Editando Mi Dirección</h3>
+                <p>
+                  <select name="pais">
+                    <option value="PE" selected>Perú</option>
+                  </select><span class="icon-usuario"></span>
+                </p>
+                <p>
+                  <select name="departamento" id="departamento" ng-change="vm.getProvincias(selectedId)" ng-model="selectedId">
+                  <option value="" disabled selected>Selecciona departamento</option>
+                    <option ng-repeat="item in vm.departamentos">{{item}}</option>
+                  </select><span class="icon-email"></span>
+                </p>
+                <p>
+                  <select name="provincia" id="provincia" ng-options="item for item in vm.provincias" ng-model="selectedName" ng-change="vm.getDistritos(selectedName)">
+                  <option value="" disabled selected>Selecciona provincia</option>
+                  </select>
+                  <span class="icon-email"></span>
+                </p>
+                <p>
+                  <select name="distrito" id="distrito" ng-model="vm.direccion.direccion">
+                  <option value="" disabled selected>Selecciona distrito</option>
+                   <option ng-repeat="(key, value) in vm.distritos" value="{{value._id}}">{{value.distrito}}</option>
+                   
+                  </select>
+                  <span class="icon-usuario2"></span>
+                </p>
+                <p>
+                  <input name="direccion" placeholder="Dirección" type="text" value="" ng-model="vm.direccion.direccion_calle">
+                  <span class="icon-telefono"></span>
+                </p>
+                <p>
+                  <input name="referencia" placeholder="Referencia" type="text" value="" ng-model="vm.direccion.direccion_referencia"><span class="icon-torta2"></span>
+                </p>
+                <p>
+                  <input name="destinatario" placeholder="Nombre del destinatario" type="text" value="" ng-model="vm.direccion.direccion_destinatario"><span class="icon-torta2">		</span>
+                </p>
+                <p>
+                  <input id="misma-direccion" type="checkbox" value="usar-misma-direccion">
+                  <label for="misma-direccion">Usar 'Mi dirección' como dirección de entrega</label>
+                </p>
+              </form>
+
+
+
+              <form>
+                <h3><i class="icon-camion"></i>Editando Mi Dirección de Entrega</h3>
+                <p>
+                  <select name="pais">
+                    <option value="PE" selected>Perú</option>
+                  </select><span class="icon-usuario"></span>
+                </p>
+                <p>
+                  <select name="departamento" id="departamento" ng-change="vm.getProvincias(selectedIdAddress)" ng-model="selectedIdAddress">
+                  <option value="" disabled selected>Selecciona departamento</option>
+                    <option ng-repeat="item in vm.departamentos" >{{item}}</option>
+                  </select><span class="icon-email"></span>
+                </p>
+                <p>
+                  <select name="provincia" id="provincia" ng-options="item for item in vm.provincias" ng-model="selectedNameAddress" ng-change="vm.getDistritos(selectedNameAddress)">
+                  <option value="" disabled selected>Selecciona provincia</option>
+                  </select>
+                  <span class="icon-email"></span>
+                </p>
+                <p>
+                  <select name="distrito" id="distrito" ng-model="vm.direccion.entrega">
+                  <option value="" disabled selected>Selecciona distrito</option>
+                   <option ng-repeat="(key, value) in vm.distritos" value="{{value._id}}">{{value.distrito}}</option>
+              
+                  </select>
+                  <span class="icon-usuario2"></span>
+                </p>
+                <p>
+                  <input name="direccion" placeholder="Dirección" type="text" ng-model="vm.direccion.entrega_calle"><span class="icon-telefono"></span>
+                </p>
+                <p>
+                  <input name="referencia" placeholder="Referencia" type="text" value="" ng-model="vm.direccion.entrega_referencia"><span class="icon-torta2"></span>
+                </p>
+                <p>
+                  <input name="destinatario" placeholder="Nombre del destinatario" ng-model="vm.direccion.entrega_destinatario"type="text" value=""><span class="icon-torta2">		</span>
+                </p>
+              </form>
+            </div>
+            <p id="direcciones" class="accesos-directos">
+              <button class="activo"><span class="icon-marcador"></span></button>
+              <button><span class="icon-camion"></span></button>
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>

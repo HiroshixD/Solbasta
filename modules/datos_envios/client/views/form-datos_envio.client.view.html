@@ -1,0 +1,65 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Te amo juan</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+    <h1>{{vm.datos_envio._id ? 'Edit Datos_envio' : 'New Datos_envio'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.datos_envioForm" class="form-horizontal" ng-submit="vm.save(vm.form.datos_envioForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Direccion de calle</label>
+          <input name="direccion_calle" type="text" ng-model="vm.datos_envio.direccion_calle" id="direccion_calle" class="form-control" placeholder="Title" required>
+          <div ng-messages="vm.form.datos_envioForm.direccion_calle.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre de la calle de la dirección es obligatorio</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Direccion de calle</label>
+          <input name="direccion_referencia" type="text" ng-model="vm.datos_envio.direccion_referencia" id="direccion_referencia" class="form-control" placeholder="Title" required>
+          <div ng-messages="vm.form.datos_envioForm.direccion_referencia.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre de la calle de la referencia es obligatorio</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="title">Nombre de destinatario</label>
+          <input name="direccion_destinatario" type="text" ng-model="vm.datos_envio.direccion_destinatario" id="direccion_destinatario" class="form-control" placeholder="Title" required>
+          <div ng-messages="vm.form.datos_envioForm.direccion_destinatario.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre de la calle de la referencia es obligatorio</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.datos_envio._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

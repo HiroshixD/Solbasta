@@ -1,0 +1,54 @@
+ <div id="subastas" ng-init="vm.changeClass('terminadas');">
+      <div class="am" ng-init="vm.setPagination(8)">
+        <section class="terminadas">
+          <h1>Subastas terminadas<span>¡Tu tambie puedes ser un ganador!</span></h1>
+          <div class="moteadas">
+            <article ng-repeat="item in vm.completed | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+              <div class="detalles">
+                <img ng-src="{{item.producto.imagenUrl}}">
+                <div class="datos">
+                  <p>Finalizó el
+                    <time>{{item.fecha_fin | date :"dd/MM/y"}}</time>
+                  </p>
+                  <h3>{{item.titulo | limitTo:12}}...</h3>
+                  <h4>precio de mercado<b>S/. {{item.producto.precio_normal}}</b></h4>
+                  <a href="#" ui-sref="homes.details({ detalle_subastaId: item._id })">Ver subasta</a>
+                </div>
+              </div>
+              <b>
+                <div ng-show="item.ultima_oferta != null">Ganado por</div>
+                <div ng-show="item.ultima_oferta == null">No hubieron ofertas para esta subasta</div>
+                <span ng-show="item.ultima_oferta != null">{{item.ultima_oferta.username}}</span>
+                <span ng-show="item.ultima_oferta == null">No hubo ganador</span>
+              </b>
+              <strong> <span solo:</span>S/. {{item.precio_vendido}}  </strong>
+            </article>
+    
+
+          </div>
+          <h2 ng-hide="vm.completed.length>0">No hay subastas terminadas en este momento.</h2>
+          <div class="filtros" ng-show="vm.completed.length>0">
+            <a href="#" ng-click="vm.getThreeMonths()">Últimos 3 meses</a>
+            <a href="#" ng-click="vm.getSixMonths()">Últimos 6 meses</a>
+
+            <form ng-submit="vm.customizedSearch(vm.key);">
+              <p>
+                <label>Por producto</label>
+                <input type="text" placeholder="Escribe tu producto aquí" ng-model="vm.key">
+              </p>
+            </form>
+            
+          </div>
+          <div class="navegacion" ng-show="vm.completed.length>0" ng-init="vm.changePaginationClass()">
+            <button ng-disabled="vm.currentPage == 0 || vm.numberOfPages(vm.completed) == 1" ng-click="vm.currentPage=vm.currentPage-1">&lt; Anterior<span>Página anterior</span></button>
+            <button class="activo">{{vm.currentPage+1}}</button>
+            <button ng-show="vm.numberOfPages(vm.completed) !=1" ng-disabled="vm.currentPage >= vm.completed.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.numberOfPages(vm.completed)-1"> <span class="paginate">-</span> {{vm.numberOfPages(vm.completed)}}</button>
+            <button ng-disabled="vm.currentPage >= vm.completed.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1">&gt; Siguiente<span>Siguiente página</span></button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="assets/js/script.js">        </script>

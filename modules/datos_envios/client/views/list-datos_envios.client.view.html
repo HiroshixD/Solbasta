@@ -1,0 +1,21 @@
+<section>
+  <div class="page-header">
+    <h1>Datos_envios</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="datos_envio in vm.datos_envios" ui-sref="datos_envios.view({ datos_envioId: datos_envio._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="datos_envio.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="datos_envio.user" ng-bind="datos_envio.user.displayName"></span>
+        <span ng-if="!datos_envio.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="datos_envio.title"></h4>
+      <p class="list-group-item-text" ng-bind="datos_envio.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.datos_envios.$resolved && !vm.datos_envios.length">
+    No datos_envios yet, why don't you <a ui-sref="datos_envios.create">create one</a>?
+  </div>
+</section>

@@ -1,0 +1,334 @@
+
+    <main id="mi-cuenta">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+           <ul>
+              <li><a ui-sref="homes.summary" title="#" class="icon-usuario">Resumen</a></li>
+              <li><a ui-sref="homes.settings" title="#" class="icon-editar activo">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" title="#" class="icon-marcador">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" title="#" class="icon-archivos">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" title="#" class="icon-copa">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" title="#" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" title="#" class="icon-usuarios">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li><a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis<span>Este es tu codigo<span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b></span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="editar-informacion">
+          <h1><span>Editar informacion</span></h1>
+          <div class="desarrollo">
+            <form>
+              <p><img src="assets/imagenes/avatar.png" alt="Avatar" id="avatar">
+              <span>{{vm.authentication.user.username}}</span>
+              <span>{{vm.authentication.user.displayName}}</span>
+              <span>{{vm.authentication.user.email}}</span><i><span class="icon-lapiz2"></span></i></p>
+
+
+              <p>
+                <input name="clave-actual" autocomplete="off" placeholder="Contraseña Actual" type="password" ng-model="vm.password.currentPassword"><span class="icon-candado1"></span>
+              </p>
+              <p>
+                <input name="nueva-clave1" autocomplete="off" placeholder="Nueva contraseña" type="password" ng-model="vm.password.newPassword"><span class="icon-candado2"></span>
+              </p>
+              <p>
+                <input name="nueva-clave2" autocomplete="off" placeholder="Repetir nueva contraseña" type="password" 
+                ng-model="vm.password.verifyPassword"><span class="icon-candado2"></span>
+              </p>
+
+
+              <p>
+                <input name="nombre" placeholder="Nombre" type="text" ng-model="vm.authentication.user.firstName"><span class="icon-usuario"></span>
+              </p>
+              <p>
+                <input name="nombre" placeholder="Nombre" type="text" ng-model="vm.authentication.user.lastName"><span class="icon-usuario"></span>
+              </p>
+              <p>
+                <input name="email" placeholder="Correo electrónico" type="email" ng-model="vm.authentication.user.email"><span class="icon-email"></span>
+              </p>
+              <p>
+                <input name="usuario" placeholder="Nombre de usuario" type="text" ng-model="vm.authentication.user.username"><span class="icon-usuario2"></span>
+              </p>
+              <p>
+                <input name="dni" placeholder="Numero de Dni" type="text" ng-model="vm.authentication.user.docNumber"><span class="icon-carnet"></span>
+              </p>
+              <p>
+                <select name="sexo" ng-model="vm.authentication.user.gender">
+                  <option value="" disabled selected>Selecciona tu sexo</option>                  
+                  <option value="F">Femenino</option>
+                  <option value="M">Masculino</option>
+                </select><span class="icon-flecha"></span>
+              </p>
+              <p>
+                <input name="celular" placeholder="Número de teléfono / Celular" type="text" ng-model="vm.authentication.user.telefono"><span class="icon-telefono"></span>
+              </p>
+              <p>
+                <input name="cumpleanos" placeholder="Fecha de Nacimiento" type="text" ng-value="vm.authentication.user.nacimiento | date :  'dd/MM/y'" disabled><span class="icon-torta2"></span>
+              </p>
+              <p>
+                <input name="submit" value="Guardar cambios" type="submit" ng-click="vm.updateUser();">
+              </p>
+            </form>
+            <p id="iconos" class="accesos-directos">
+              <button><span class="icon-archivos2"></span></button>
+              <button><span class="icon-play"></span></button>
+              <button><span class="icon-camara"></span></button>
+              <button><span class="icon-reloj"></span></button>
+              <button><span class="icon-regalo"></span></button>
+            </p>
+          </div>
+          <div id="secciones">
+            <section class="suscripcion">
+              <h2>Mi suscripción</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article class="accion">
+                    <h3 ng-show="vm.authentication.user.suscriptionState === true">Si no deseas recibir más promociones en tu correo electrónico, por favor, da click aquí:</h3>
+                    <button ng-show="vm.authentication.user.suscriptionState === true" ng-click="vm.manageSuscription();">Cancelar suscripción</button>
+                    <h3 ng-show="vm.authentication.user.suscriptionState === false">Deseas recibir más promociones en tu correo electrónico?, por favor, da click aquí:</h3>
+                    <button ng-show="vm.authentication.user.suscriptionState === false" ng-click="vm.manageSuscription();">Activar suscripción</button>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <section class="videos">
+              <h2>Mis Videos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Testimonio de</span> Monopoly 1</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Testimonio de</span> Monopoly 2</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Testimonio de</span> Monopoly 3</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Testimonio de</span> Monopoly 4</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Testimonio de</span> Monopoly 5</h3><a href="#" title="#">Ver video</a>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <div class="imagen"><span class="icon-play"></span></div>
+                    <div class="texto">
+                      <h3>Agrega un video<span>y gana solsazos</span></h3><a href="#" title="#">Sube un video</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="fotos">
+              <h2>Mis Fotos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 1</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 2</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 3</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 4</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><img src="assets/imagenes/hombre.png" alt="#"></div>
+                    <div class="texto">
+                      <h3> <span>Foto de</span> Monopoly 5</h3><a href="#" title="#">Ver foto</a>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <div class="imagen"><span class="icon-camara"></span></div>
+                    <div class="texto">
+                      <h3>Agrega una foto<span>y gana solsazos</span></h3><a href="#" title="#">Sube una foto</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="recordatorios">
+              <h2>Mis recordatorios</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/1.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 11</b>/05/16</time>11:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.100</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/2.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 12</b>/05/16</time>12:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.200</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/3.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 13</b>/05/16</time>13:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.300</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/4.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 14</b>/05/16</time>14:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.400</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/5.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 15</b>/05/16</time>15:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.500</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/6.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 16</b>/05/16</time>16:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.600</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/7.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 17</b>/05/16</time>17:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.700</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article>
+                    <button> <span class="icon-equis"></span>	Eliminar</button>
+                    <div class="imagen"><img src="assets/imagenes/proximas/proximas/8.png" alt="#"></div>
+                    <div class="texto">
+                      <p>
+                        <time datetime="2015-05-17"> <b>Martes 18</b>/05/16</time>18:00:00 PM
+                      </p>
+                      <h3>Mochila Adidas</h3>
+                      <h4>precio de mercado<b> s/.800</b></h4><a href="#" title="#">Descripción</a>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <div class="imagen"><img src="assets/imagenes/proxima1.png" alt="#"></div>
+                    <div class="texto">
+                      <h3>Agrega un recordatorio</h3>
+                      <h4>Que no se te pasen las subastas</h4><a href="#" title="#">Subastas en vivo</a>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha"></span></button>
+            </section>
+            <section class="regalos">
+              <h2>Mis Regalos</h2>
+              <div class="contenedor">
+                <div class="articulos">
+                  <article>
+                    <div class="imagen"><span class="icon-facebook"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-twitter"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-instagram"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}	</b>
+                    </div>
+                  </article>
+                  <article>
+                    <div class="imagen"><span class="icon-facebook"></span></div>
+                    <div class="texto">
+                      <h3> <span>Ganaste este codigo</span>Para canejar solsazos</h3><b>{{vm.authentication.user.referral_code}}	</b>
+                    </div>
+                  </article>
+                  <article class="accion">
+                    <h3><span>No tienes regalos</span>Ve a nuestros fan page</h3>
+                    <p><a href="#" title="Facebook" class="icon-facebook"><span>Facebook </span></a><a href="#" title="Instagram" class="icon-instagram"><span>Instagran</span></a><a href="#" title="Youtube" class="icon-twitter"><span>Twitter</span></a></p>
+                  </article>
+                </div>
+              </div>
+              <button><span class="icon-flecha-izquierda"></span></button>
+              <button><span class="icon-flecha-derecha">			</span></button>
+            </section>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>

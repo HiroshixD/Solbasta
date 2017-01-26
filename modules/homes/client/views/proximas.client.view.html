@@ -1,0 +1,61 @@
+    <div id="subastas" ng-init="vm.changeClass('proximas')">
+      <div class="am" ng-init="vm.setPagination(12)">
+        <section class="proximas">
+          <h1>Subastas proximas<span>¡No las olvides, y ponle recordatorio!</span></h1>
+                    <h2 ng-hide="vm.reminderData.length>0">No hay subastas próximas en este momento.</h2>
+
+          <div class="planas">
+
+            <article ng-repeat="item in vm.reminderData | startFrom:vm.currentPage*vm.pageSize | limitTo:vm.pageSize">
+              <div class="datos" ng-init="vm.getReminderById(item._id);">
+                <div class="tipos">
+                <a class="rapidita">
+                  <span class="icon-pentagono"></span>
+                    <i class="icon-rayo"></i>
+                  <span>
+                    <b>La rapidita</b> 
+                    Ésta subasta no tiene reinicio de tiempo, quien llegue primero a ofertas 10 veces ¡GANA!
+                  </span>
+                </a>
+                <a class="cumpleanos">
+                <span class="icon-pentagono"></span><i class="icon-torta"></i><span><b>La cumpleañera</b> Tendrás la posibilidad de pujar dos veces por el precio de una, ok no XD</span></a><a class="vistas"><span class="icon-pentagono"></span><i class="icon-ojo"></i><span><b>Un titulo interesante</b> No se me ocurre que poner acá, pero seguro despues se me ocurrirá, ¿o no?</span></a><a class="pelea"><span class="icon-pentagono"></span><i class="icon-guantes"></i><span><b>Muerte súbita</b> No hay limite de tiempo, el último que dé su puja, ganará si o si ¿que esperas? ¡PUJA!  </span></a></div>
+                <div class="texto">
+                  <p> 
+                    <time>{{item.fecha_inicio | date: 'dd/MM/y'}}</time>{{item.fecha_inicio | date: 'hh:mm:ss a'}}
+                  </p>
+                  <h3>{{item.titulo}}</h3>
+                  <h4>precio de mercado<b>S/. {{item.producto.precio_normal}}</b></h4>
+                  <a href="#" ui-sref="homes.details({ detalle_subastaId: item._id })">Ver subasta</a>
+                </div>
+                <button class="" ng-click="vm.createReminder(item._id)" ng-show="!item.remindered && vm.auth===true">
+                  <!-- Se agrega la clase 'activo' para mostrar activado el boton (osea, con fondo blanco y el reloj de color plomo) y tmb se agrega la clase 'aviso' para mostrar el globito de notificacion. [EJM: <button class="activo aviso">]-->
+                  <span class="icon-exagono"></span><i class="icon-reloj"></i><span>Se agrego a tu lista de recordatorios en tu cuenta</span>
+                </button>
+                <button class="activo aviso" ng-click="vm.deleteReminder(item._id)" ng-show="item.remindered && vm.auth===true">
+                  <!-- Se agrega la clase 'activo' para mostrar activado el boton (osea, con fondo blanco y el reloj de color plomo) y tmb se agrega la clase 'aviso' para mostrar el globito de notificacion. [EJM: <button class="activo aviso">]-->
+                  <span class="icon-exagono"></span><i class="icon-reloj"></i><span>Se agrego a tu lista de recordatorios en tu cuenta</span>
+                </button>
+    
+              </div>
+              <div class="extra"><img ng-src="{{item.producto.thumbnail_1}}">
+              <strong>{{item.titulo}}<span>Precio de mercado<b> s/. {{item.producto.precio_normal}}</b></span></strong></div>
+            </article>
+
+          </div>
+          <div class="navegacion" ng-show="vm.reminderData.length>0">
+            <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1">&lt;&lt; Anterior<span>Página anterior</span></button>
+            <button class="activo">{{vm.currentPage+1}}</button>
+            <button ng-disabled="vm.currentPage >= vm.reminderData.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.numberOfPages(vm.reminderData)-1">{{vm.numberOfPages(vm.reminderData)}}</button>
+            <button ng-disabled="vm.currentPage >= vm.reminderData.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1">&gt;&gt; Siguiente<span>Siguiente página</span></button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <script type="text/javascript" src="assets/js/script.js">      </script>

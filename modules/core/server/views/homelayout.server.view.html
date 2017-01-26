@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <base href="/">
+    <title>Solbasta</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="description" content="{{description}}">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/webicons/styles.css">
+    <link rel="stylesheet" href="assets/dist/css/datepicker.css">
+
+
+   <style> .ng-cloak { display: none !important; } </style>
+  </head>
+  <body ng-controller="HeaderController as vm" ng-class="$root.bodyClass">
+    <header>
+      <div class="am">
+      <a ui-sref="homes.dashboard" title="Portada" id="logo">SolBasta</a>
+
+        <nav class="menu">
+          <ul>
+            <li><a ui-sref="homes.envivo"><span>Subastas</span>En vivo</a></li>
+            <li><a ui-sref="homes.terminadas"><span>Subastas</span> Terminadas</a></li>
+            <li><a ui-sref="homes.proximas"><span>Subastas</span> Proximas</a></li>
+            <li><a ui-sref="homes.categorias">Categorias</a></li>
+            <li class="como"><a ui-sref="homes.comojuego">Como juego</a></li>
+            <li class="anaranjado"><a ui-sref="homes.testimonios" href="#" ng-hide="vm.auth===true">Testimonios</a></li>
+            <li class="anaranjado"><a href="/charge" target="_self" ng-hide="vm.auth===false">Comprar solsasos</a></li>
+            <li class="cuenta ng-cloak"><a href="#" href="#" ng-hide="vm.auth===false">Mi cuenta</a>
+              <ul>
+                <li><a ui-sref="homes.summary" href="#" class="icon-usuario">Resumen</a></li>
+                <li><a ui-sref="homes.settings" class="icon-editar">Editar informacion</a></li>
+                <li><a ui-sref="homes.address" class="icon-marcador">Mis direcciones</a></li>
+                <li><a ui-sref="homes.balance" class="icon-archivos">Historial de solsazos</a></li>
+                <li><a ui-sref="homes.won" class="icon-copa">Subastas ganadas</a></li>
+                <li><a ui-sref="homes.payments" class="icon-billete">Pagos</a></li>
+                <li><a ui-sref="homes.referrals" class="icon-usuarios">Invitados</a></li>
+              <li><a ng-show="vm.usertype === 1" href="/admin" target="_self" class="icon-usuarios">Panel administrativo</a></li>
+                <li><a ng-click="vm.signout();" href="#" target="_self" class="icon-usuarios">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+
+        <div class="menunav-colp">
+          <div class="barmenu"></div>
+          <div class="barmenu"></div>
+          <div class="barmenu"></div>
+        </div>
+        <div class="menufloat">
+          
+          <div>
+            <ul class="menu-nav-float">
+            <li><a ui-sref="homes.envivo"><span>Subastas</span>En vivo</a></li>
+            <li><a ui-sref="homes.terminadas"><span>Subastas</span> Terminadas</a></li>
+            <li><a ui-sref="homes.proximas"><span>Subastas</span> Proximas</a></li>
+            <li><a ui-sref="homes.categorias">Categorias</a></li>
+            <li class="como"><a ui-sref="homes.comojuego">Como juego</a></li>
+            <li class="anaranjado"><a href="homes.testimonios" href="#" ng-hide="vm.auth===true">Testimonios</a></li>
+            <li class="anaranjado"><a href="/charge" target="_self" ng-hide="vm.auth===false">Comprar solsasos</a></li>
+            <li class="cuenta ng-cloak"><a href="mi-cuenta.html" href="#" ng-hide="vm.auth===false">Mi cuenta</a>
+              <ul>
+                <li><a ui-sref="homes.summary" href="#" class="icon-usuario">Resumen</a></li>
+                <li><a ui-sref="homes.settings" class="icon-editar">Editar informacion</a></li>
+                <li><a ui-sref="homes.address" class="icon-marcador">Mis direcciones</a></li>
+                <li><a ui-sref="homes.balance" class="icon-archivos">Historial de solsazos</a></li>
+                <li><a ui-sref="homes.won" class="icon-copa">Subastas ganadas</a></li>
+                <li><a ui-sref="homes.payments" class="icon-billete">Pagos</a></li>
+                <li><a ui-sref="homes.referrals" class="icon-usuarios">Invitados</a></li>
+              <li><a ng-show="vm.usertype === 1" href="/admin" target="_self" class="icon-usuarios">Panel administrativo</a></li>
+                <li><a ng-click="vm.signout();" href="#" target="_self" class="icon-usuarios">Cerrar Sesión</a></li>
+              </ul>
+            </li>
+            </ul>
+          </div>
+
+        </div>
+
+        
+        <div id="usuario">
+        <div id="opciones" class="ng-cloak" ng-if="vm.auth===false">
+          <a ui-sref="register">REGISTRARSE</a>
+          <a ui-sref="login">INICIAR SESIÓN</a>
+          </div>
+          <!--#opciones
+          a(href="registrarse-html", title="Registrarse") Registrarse
+          a(href="iniciar-sesion.html", title="Iniciar Sesión") Iniciar Sesión
+          -->
+          <div id="userdata" ng-if="vm.auth===true">
+            <span>Hola, <b ng-bind="vm.usuario"></b> tienes <b ng-bind="$root.saldoglobal"></b> solsazo(s) disponibles</span>
+          </div>
+
+
+        </div>
+      </div>
+    </header>
+
+
+   <section>
+        {% block content %}{% endblock %}
+    </section>
+
+
+    <footer>
+      <div class="am">
+            <div class="promo-redes" ng-show="$root.bodyClass !== 'home' ">
+          <h2> <span>Entérate de</span>Promociones y novedades<span>únicas en:</span></h2><a href="#" title="Facebook" class="icon-facebook"><span>Facebook </span></a><a href="#" title="Youtube" class="icon-youtube"><span>Youtube</span></a><a href="#" title="Instagram" class="icon-instagram"><span>Instagran</span></a>
+        </div>
+        <div class="desarrollo">
+          <div class="testimonio">
+            <h3>Testimonios</h3>
+            <p> <span></span>Gracias solbasta, por el play station 4, solo con 3 ofertas me lo gane. Muy seguros y efectivos.<span></span></p>
+          </div>
+          <div class="enlaces">
+            <div class="lista">
+              <h3>Acerca de Solbasta</h3>
+              <ul>
+                <li><a ui-sref="#" href="#">¿Que es solbasta?</a></li>
+                <li><a ui-sref="#" href="#">¿Quienes somos?</a></li>
+                <li><a ui-sref="homes.tipos" href="#" class="resalte">Tipos de subastas</a></li>
+                <li><a ui-sref="#" href="#" class="activo">Testimonios</a></li>
+                <li><a ui-sref="home.register">Registrate ahora</a></li>
+              </ul>
+            </div>
+            <div class="lista">
+              <h3>Servicio al cliente</h3>
+              <ul>
+                <li><a ui-sref="homes.informacion-soporte" href="#" title="Ayuda y soporte">Ayuda y soporte</a></li>
+                <li><a ui-sref="#" href="#" title="¿Como funciona?">¿Como funciona?</a></li>
+                <li><a ui-sref="homes.preguntas-frecuentes" href="#" title="Preguntas frecuentes">Preguntas frecuentes</a></li>
+                <li><a ui-sref="#" href="#" title="Contáctanos">Suscripción de correos</a></li>
+              </ul>
+            </div>
+            <div class="lista">
+              <h3>Políticas y condiciones</h3>
+              <ul>
+                <li><a ui-sref="homes.politica-privacidad" href="#">Política de privacidad</a></li>
+                <li><a ui-sref="#" href="#">Política de garantía y devoluciones</a></li>
+                <li><a ui-sref="homes.terminos-condiciones" href="#">Terminos y condiciones</a></li>
+                <li><a ui-sref="#" href="#">No es un juego de azar</a></li>
+                <li><a ui-sref="#" href="#" class="resalte">Libro de reclamaciones</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="tarjetas">
+            <h2>Paga con:</h2>
+              <img src="assets/img/tarjetas.png">
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="am"> 
+          <p>Todos los derechos reservados. El uso de éste sitio web implica la aceptación de los Términos y Condiciones de Uso y Política de Privacidad de Solbasta S.R.L * Porcentajes de ahorro referenciales, el ahorro total depende de los soles utilizados para ofertar.</p>
+        </div>
+      </aside>
+    </footer>
+
+      <script type="text/javascript">
+        var user = {{ user | json | safe }};
+    </script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+    <!--Application JavaScript Files-->
+  {% for jsFile in jsFiles %}
+  <script type="text/javascript" src="{{jsFile}}"></script>
+  {% endfor %}
+      <script type="text/javascript" src="assets/dist/js/datepicker.js"></script>
+    <script type="text/javascript" src="assets/dist/js/i18n/datepicker.es.js"></script> 
+
+
+
+  {% if livereload %}
+    <!--Livereload script rendered -->
+    <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
+    {% endif %}
+  </body>
+</html>

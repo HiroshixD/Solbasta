@@ -1,0 +1,81 @@
+<div id="content" class="content">
+      <!-- begin breadcrumb -->
+ 
+      <!-- end breadcrumb -->
+      <!-- begin page-header -->
+      <h1 class="page-header">Configuración de cuenta </h1>
+      <!-- end page-header -->
+      
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Actualización de perfil</h4>
+                        </div>
+                        <div class="panel-body">
+                           
+
+
+<section class="row">
+  <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
+    <form name="vm.userForm" ng-submit="vm.updateUserProfile(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="firstName">Nombres</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="vm.user.firstName" placeholder="First Name" required>
+          <div ng-messages="vm.userForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">First name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="lastName">Apellidos</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="vm.user.lastName" placeholder="Last Name" required>
+          <div ng-messages="vm.userForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" class="form-control" ng-model="vm.user.email" placeholder="Email" lowercase required>
+          <div ng-messages="vm.userForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Email address is required.</p>
+            <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="username">Nombre de usuario</label>
+          <input type="text" id="username" name="username" class="form-control" ng-model="vm.user.username" placeholder="Username" lowercase required>
+          <div ng-messages="vm.userForm.username.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Username is required.</p>
+          </div>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+        <div ng-show="vm.success" class="text-center text-success">
+          <strong>Tu perfil se actualizó satisfactoriamente</strong>
+        </div>
+        <div ng-show="vm.error" class="text-center text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

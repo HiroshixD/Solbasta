@@ -1,0 +1,23 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.transaccion_saldo.title"></h1>
+  </div>
+  <div class="pull-right" ng-show="vm.transaccion_saldo.isCurrentUserOwner">
+    <a class="btn btn-primary" ui-sref="transaccion_saldos.edit({ transaccion_saldoId: vm.transaccion_saldo._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.transaccion_saldo.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.transaccion_saldo.user" ng-bind="vm.transaccion_saldo.user.displayName"></span>
+      <span ng-if="!vm.transaccion_saldo.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.transaccion_saldo.content"></p>
+</section>

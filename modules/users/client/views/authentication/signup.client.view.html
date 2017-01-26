@@ -1,0 +1,277 @@
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <main id="registrarte">
+      <div class="am">
+        <div id="formulario">
+          <h1>Registrate aqui<span> y empieza a ganar a un sol</span></h1>
+          <p>Registrate en Solbasta. Llena tus datos y empieza a ahorrar. ¿Ya estás registrado? Entonces <a href="iniciar-sesion.html" title="Iniciar Sesión">Inicia Sesión</a></p>
+          <p>Los campos marcados co un asterisco (*)   son obligatorios</p>
+           <form name="vm.userForm" ng-submit="vm.signup(vm.userForm.$valid)" class="signin" novalidate autocomplete="off">
+
+            <h2>Nombre de usuario y contrasena</h2>
+            <p>
+              <input type="text" id="username" name="username" ng-model="vm.credentials.username" placeholder="Nombre de usuario*" value="" lowercase required>
+              <span>(Entre 6 y 16 caracteres)</span>
+              <span>Tu nombre de usuario será mostrado a otros usuarios cuando realices una oferta. Este solo puede contener letras y números.</span>
+            </p>
+            <p>
+               <input type="password" id="password" name="password" class="form-control" ng-model="vm.credentials.password" placeholder="Contraseña" uib-popover="{{vm.getPopoverMsg()}}" uib-popover-trigger="focus" password-validator required>
+               <span>(Entre 6 y 24 caracteres)</span>
+            </p>
+
+            <p>
+              <input type="password" id="password" name="password" class="form-control" ng-model="vm.password2" placeholder="Confirmar contraseña" uib-popover="{{vm.getPopoverMsg()}}" uib-popover-trigger="focus" password-validator required>            
+            </p>
+
+            <h2>Informacion personal</h2>
+            <p class="pizquierda">
+            <input type="text" id="firstName" name="firstName" ng-model="vm.credentials.firstName" placeholder="Nombres" required>
+            <span class="icon-usuario"></span>
+            </p>
+
+             <p class="pderecha">
+              <input type="text" id="lastName" name="lastName" placeholder="Apellidos" ng-model="vm.credentials.lastName" required>
+              <span class="icon-usuario"></span>
+            </p>
+
+            <p class="pizquierda">
+               <input type="email" id="email" name="email" placeholder="Dirección de correo electrónico" ng-model="vm.credentials.email" value=""  required>
+              <span class="icon-email"></span>
+            </p>
+
+           <p class="pderecha">
+            <input type="text" id="birthDate" name="birthDate" placeholder="Fecha de nacimiento*" value="" data-language="es" class="datepicker-here" required>
+              <span class="icon-torta2"></span>
+            </p>
+
+           <p class="pizquierda">
+               <input type="email" id="email" name="email" ng-model="vm.email2" placeholder="Confirmar correo electrónico" required>
+              <span class="icon-email"></span>
+            </p>
+
+
+            <p class="pderecha anaranjado">
+                <select class="form-control" id="gender" ng-model="vm.credentials.gender" required>
+                <option value="" selected>Género</option>
+                 <option value="M">Masculino</option>
+                 <option value="F">Femenino</option>
+              </select>
+              <span class="icon-flecha"></span>
+            </p>
+
+
+            <p class="pizquierda anaranjado sinmargenabajo">
+              <select class="form-control" id="docType" ng-model="vm.credentials.docType" required>
+                  <option value="" selected>Tipo de Documento</option>
+                  <option value=1>DNI</option>
+                  <option value=2>Pasaporte</option>
+                  <option value=3>Otros</option>
+              </select>
+              <span class="icon-flecha"></span>
+            </p>
+
+
+            <p class="pderecha sinmargenabajo">
+            <input type="text" id="docNumber" name="docNumber" ng-model="vm.credentials.docNumber" placeholder="Número de Documento" required><span class="icon-carnet"></span>
+            </p>
+
+            <h2>Informacion adicional</h2>
+            <p class="recomendado">¿Fuiste recomendado por algún otro usuario? Si no fué así, deja este campo en blanco.
+                 <input type="text" id="referral" name="referral" ng-model="vm.referral" placeholder="Codigo de referido" ng-disabled="vm.txtref">
+
+              <span>Ingrese el <b> nombre de usuario o</b> la dirección de<b> correo</b> electrónico de la persona que lo refirió</span>
+            </p>
+            
+            <h2>Gana soles</h2>
+            <p class="likes">Dale like a nuestras redes sociales o comparte en estas ¡Y obtén más beneficios!<span><a href="#"><span class="icon-facebook"></span>Like + 2 soles</a><a href="#">Comparte más 3 soles</a><a href="#"><span class="icon-twitter"></span>like + 2 soles</a><a href="#">comparte + 3 soles</a></span></p>
+            <p class="suscribirme">
+              <input id="suscribirme" type="checkbox" value="suscribirme">
+              <label ng-click="vm.suscripcion();" for="suscribirme">Suscribirme al boletin de subastas, promociones y anuncios</label><span>Debe leer y aceptar los términos y condiciones para poder continuar:</span>
+              <input id="leido" type="checkbox" value="suscribirme">
+              <label ng-click="vm.terminosCondiciones()" for="leido">He leido y acepto los <b> terminos y condiciones</b> / la<b> politica de privacidad</b> y soy mayor de 18 años de edad.</label>
+            </p>
+            <p class="siguiente">
+              <button id="siguiente">Siguiente</button>
+            </p>
+               <input type="text" ng-model="vm.credentials.secret" style="display:none;">
+            <div id="personaje">
+              <h1>Escoge tu personaje<span>¡Identificate con uno y empieza a jugar!</span></h1>
+              <ul>
+                <li>
+                  <input type="radio" name="personaje" id="personaje1" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje1">
+                  <img src="assets/imagenes/personajes/pj1.png" alt="Personaje 1" width="184px" height="184px"  >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje2" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj2.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje2">
+                  <img src="assets/imagenes/personajes/pj2.png" alt="Personaje 2" width="184px" height="184px"  >
+                  </label>
+                </li>
+                <li >
+                  <input type="radio" name="personaje" id="personaje3" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj3.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje3">
+                  <img src="assets/imagenes/personajes/pj3.png" alt="Personaje 3" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje4" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj4.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje4">
+                  <img src="assets/imagenes/personajes/pj4.png" alt="Personaje 4" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje5" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj5.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje5">
+                  <img src="assets/imagenes/personajes/pj5.png" alt="Personaje 5" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje6" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj6.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje6">
+                  <img src="assets/imagenes/personajes/pj6.png" alt="Personaje 6" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje7" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj7.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje7">
+                  <img src="assets/imagenes/personajes/pj7.png" alt="Personaje 7" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje8" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj8.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje8">
+                  <img src="assets/imagenes/personajes/pj8.png" alt="Personaje 8" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje9" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj9.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje9">
+                  <img src="assets/imagenes/personajes/pj9.png" alt="Personaje 9" width="184px" height="184px"> 
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje10" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj10.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje10">
+                  <img src="assets/imagenes/personajes/pj10.png" alt="Personaje 10 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje11" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj11.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje11">
+                  <img src="assets/imagenes/personajes/pj11.png" alt="Personaje 11 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje12" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj12.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje12">
+                  <img src="assets/imagenes/personajes/pj12.png" alt="Personaje 12 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje13" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj13.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje13">
+                  <img src="assets/imagenes/personajes/pj13.png" alt="Personaje 13 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje14" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj14.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje14">
+                  <img src="assets/imagenes/personajes/pj14.png" alt="Personaje 14 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje15" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj15.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje15">
+                  <img src="assets/imagenes/personajes/pj15.png" alt="Personaje 15 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje16" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj16.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje16">
+                  <img src="assets/imagenes/personajes/pj16.png" alt="Personaje 16 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje17" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj17.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje17">
+                  <img src="assets/imagenes/personajes/pj17.png" alt="Personaje 17 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje18" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj18.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje18">
+                  <img src="assets/imagenes/personajes/pj18.png" alt="Personaje 18 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje19" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj19.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje19">
+                  <img src="assets/imagenes/personajes/pj19.png" alt="Personaje 19 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje20" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj20.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje20">
+                  <img src="assets/imagenes/personajes/pj20.png" alt="Personaje 20 width="184px" height="184px"" >
+                  </label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje21" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj21.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje21">
+                  <img src="assets/imagenes/personajes/pj21.png" alt="Personaje 21 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje22" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj22.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje22">
+                  <img src="assets/imagenes/personajes/pj22.png" alt="Personaje 22 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje23" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj23.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje23">
+                  <img src="assets/imagenes/personajes/pj23.png" alt="Personaje 23 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje24" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj24.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje24">
+                  <img src="assets/imagenes/personajes/pj24.png" alt="Personaje 24 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje25" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj25.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje25">
+                  <img src="assets/imagenes/personajes/pj25.png" alt="Personaje 25 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje26" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj26.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje26">
+                  <img src="assets/imagenes/personajes/pj26.png" alt="Personaje 26 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje27" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj27.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje27">
+                  <img src="assets/imagenes/personajes/pj27.png" alt="Personaje 27 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje28" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj28.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje28">
+                  <img src="assets/imagenes/personajes/pj28.png" alt="Personaje 28 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje29" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj29.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje29">
+                  <img src="assets/imagenes/personajes/pj29.png" alt="Personaje 29 width="184px" height="184px"" ></label>
+                </li>
+                <li>
+                  <input type="radio" name="personaje" id="personaje30" ng-model="vm.avatar" ng-value="'assets/imagenes/personajes/pj30.png'" ng-click="vm.asignarAvatar(vm.avatar)">
+                  <label for="personaje30">
+                  <img src="assets/imagenes/personajes/pj30.png" alt="Personaje 30 width="184px" height="184px"" ></label>
+                </li>
+              </ul>
+              <input type="submit" value="Envia y empieza a ahorrar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="assets/js/script.js"></script>

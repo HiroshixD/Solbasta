@@ -1,0 +1,90 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">{{vm.producto._id ? 'Editar Slider' : 'Crear Sliders para Carrusel Principal'}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.productoForm" class="form-horizontal" ng-submit="vm.save(vm.form.productoForm.$valid)" novalidate>
+      <fieldset>
+      <h2>Primer Slider</h2>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="subasta_slider1">Elige la subasta que redireccionará el slider</label>   
+           <select  name="subasta_slider1" type="text" ng-model="vm.producto.subasta_slider1" id="subasta_slider1" class="form-control">
+             <option ng-repeat="item in vm.auctions" value="{{item._id}}">{{item.titulo}}</option>
+           </select>
+            <div ng-messages="vm.form.detalle_subastaForm.subasta_slider1.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Elige el item a subastar para referenciar</p>
+            </div>
+        </div>
+    
+    <h2>Segundo Slider</h2>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="subasta_slider2">Elige la subasta que redireccionará el slider</label>   
+           <select  name="subasta_slider2" type="text" ng-model="vm.producto.subasta_slider2" id="subasta_slider2" class="form-control">
+             <option ng-repeat="item in vm.auctions" value="{{item._id}}">{{item.titulo}}</option>
+           </select>
+            <div ng-messages="vm.form.detalle_subastaForm.subasta_slider2.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Elige el item a subastar para referenciar</p>
+            </div>
+        </div>
+
+<h2>Tercer Slider</h2>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="subasta_slider3">Elige la subasta que redireccionará el slider</label>   
+           <select  name="subasta_slider3" type="text" ng-model="vm.producto.subasta_slider3" id="subasta_slider3" class="form-control">
+             <option ng-repeat="item in vm.auctions" value="{{item._id}}">{{item.titulo}}</option>
+           </select>
+            <div ng-messages="vm.form.detalle_subastaForm.subasta_slider3.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Elige el item a subastar para referenciar</p>
+            </div>
+        </div>
+
+
+<h2>Cuarto Slider</h2>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="subasta_slider4">Elige la subasta que redireccionará el slider</label>   
+           <select  name="subasta_slider4" type="text" ng-model="vm.producto.subasta_slider4" id="subasta_slider4" class="form-control">
+             <option ng-repeat="item in vm.auctions" value="{{item._id}}">{{item.titulo}}</option>
+           </select>
+            <div ng-messages="vm.form.detalle_subastaForm.subasta_slider4.$error" role="alert">
+              <p class="help-block error-text" ng-message="required">Elige el item a subastar para referenciar</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.producto._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div class="form-group">
+        <a ui-sref="productos.sliderthumbnail({ productoId: vm.producto._id })">{{vm.producto._id ? 'Editar imágenes y thumbnails' : ''}}</a>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

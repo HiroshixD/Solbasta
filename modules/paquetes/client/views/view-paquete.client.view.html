@@ -1,0 +1,42 @@
+<div id="content" class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">Paquetes</h4>
+                </div>
+                <div class="panel-body">
+
+                    <section>
+                        <div class="page-header">
+                            <h1 ng-bind="vm.paquete.title"></h1>
+                        </div>
+                        <div class="pull-right" ng-show="true">
+                            <a class="btn btn-primary" ui-sref="paquetes.edit({ paqueteId: vm.paquete._id })">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                            <a class="btn btn-primary" ng-click="vm.remove()">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </div>
+                        <small>
+                            <em class="text-muted">
+                              Creado
+                              <span ng-bind="vm.paquete.created | date:'mediumDate'"></span>
+                              Por
+                              <span ng-if="vm.paquete.user" ng-bind="vm.paquete.user.displayName"></span>
+                              <span ng-if="!vm.paquete.user">Usuario eliminado</span>
+                            </em>
+                         </small>
+                        <p class="lead" ng-bind="vm.paquete.nombre"></p>
+                        <p class="lead" ng-bind="vm.paquete.valor"></p>
+                        <p class="lead" ng-bind="vm.paquete.monto"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

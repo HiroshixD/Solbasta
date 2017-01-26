@@ -1,0 +1,232 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">{{vm.producto._id ? 'Sliders Web' : 'Paso 2: Agregar Fotos de producto '}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_1}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_1.queue.length">
+          <span class="btn btn-default btn-file">
+              1er Slider <input type="file" nv-file-select uploader="vm.uploader_1">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_1.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_1();">Subir Slider 1</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_1();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_2}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_2.queue.length">
+          <span class="btn btn-default btn-file">
+              2do Slider <input type="file" nv-file-select uploader="vm.uploader_2">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_2.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_2();">Subir Slider 2</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_2();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_3}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_3.queue.length">
+          <span class="btn btn-default btn-file">
+              3er Slider <input type="file" nv-file-select uploader="vm.uploader_3">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_3.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_3();">Subir Slider 3</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_3();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_4}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_4.queue.length">
+          <span class="btn btn-default btn-file">
+              4to Slider <input type="file" nv-file-select uploader="vm.uploader_4">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_4.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_4();">Subir Slider 4</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_4();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+</section>
+
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">{{vm.producto._id ? 'Sliders para Mobil' : 'Paso 2: Agregar Fotos de producto '}}</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_1_mobil}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_1_mobil.queue.length">
+          <span class="btn btn-default btn-file">
+              1er Slider <input type="file" nv-file-select uploader="vm.uploader_1_mobil">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_1_mobil.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_1_mobil();">Subir Slider 1</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_1_mobil();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_2_mobil}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_2_mobil.queue.length">
+          <span class="btn btn-default btn-file">
+              2do Slider <input type="file" nv-file-select uploader="vm.uploader_2_mobil">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_2_mobil.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_2_mobil();">Subir Slider 2</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_2_mobil();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_3_mobil}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_3_mobil.queue.length">
+          <span class="btn btn-default btn-file">
+              3er Slider <input type="file" nv-file-select uploader="vm.uploader_3_mobil">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_3_mobil.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_3_mobil();">Subir Slider 3</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_3_mobil();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+
+<div class="col-sm-3">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_4_mobil}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_4_mobil.queue.length">
+          <span class="btn btn-default btn-file">
+              4to Slider <input type="file" nv-file-select uploader="vm.uploader_4_mobil">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_4_mobil.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_4_mobil();">Subir Slider 4</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_4_mobil();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+</div>
+
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+
+<!--            <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">{{vm.producto._id ? 'Cuarto Slider' : 'Paso 2: Agregar Fotos de producto '}}</h4>
+                        </div>
+                        <div class="panel-body">
+    <form class="signin form-horizontal">
+      <fieldset>
+        <div class="form-group text-center">
+          <img ng-src="{{vm.thumbnailImageUrl_4}}" alt="{{vm.producto.nombre}}" class="img-thumbnail user-profile-picture">
+        </div>
+        <div class="text-center form-group" ng-hide="vm.uploader_4.queue.length">
+          <span class="btn btn-default btn-file">
+              4to Slider <input type="file" nv-file-select uploader="vm.uploader_4">
+          </span>
+        </div>
+        <div class="text-center form-group" ng-show="vm.uploader_4.queue.length">
+          <button class="btn btn-primary" ng-click="vm.uploadProfilePicture_4();">Subir Cuarto Slider</button>
+          <button class="btn btn-default" ng-click="vm.cancelUpload_4();">Cancelar</button>
+        </div>
+
+      </fieldset>
+    </form>
+                        </div>
+    </div>
+    </div>
+</div>
+ -->
+
+

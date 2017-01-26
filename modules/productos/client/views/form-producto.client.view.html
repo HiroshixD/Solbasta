@@ -1,0 +1,138 @@
+<div id="content" class="content">
+  
+      <div class="row">
+          <div class="col-md-12">
+                    <div class="panel panel-inverse">
+                        <div class="panel-heading">
+                            <div class="panel-heading-btn">
+                                <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            </div>
+                            <h4 class="panel-title">Crear Producto</h4>
+                        </div>
+                        <div class="panel-body">
+                            
+<section>
+  <div class="page-header">
+    <h1>{{vm.producto._id ? 'Editar Producto' : 'Nuevo Producto'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.productoForm" class="form-horizontal" ng-submit="vm.save(vm.form.productoForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="nombre">Producto</label>
+          <input name="nombre" type="text" ng-model="vm.producto.nombre" id="nombre" class="form-control" placeholder="Ingresa nombre" required>
+          <div ng-messages="vm.form.productoForm.nombre.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Nombre de producto es requerido.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="precio_normal">Precio normal</label>
+          <input name="precio_normal" type="text" ng-model="vm.producto.precio_normal" id="precio_normal" class="form-control" placeholder="Ingresa precio_normal" required>
+          <div ng-messages="vm.form.productoForm.precio_normal.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El precio normal es necesario.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="precio_oferta">Precio de oferta</label>
+          <input name="precio_oferta" type="text" ng-model="vm.producto.precio_oferta" id="precio_oferta" class="form-control" placeholder="Ingresa precio_oferta" required>
+          <div ng-messages="vm.form.productoForm.precio_oferta.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El precio oferta es necesario.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="youtube_url">IDentificador de youtube</label>
+          <input name="youtube_url" type="text" ng-model="vm.youtube_url" id="youtube_url" class="form-control" placeholder="Ingresa youtube_url">
+        </div> 
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="nombre_display">Nombre que se mostrará</label>
+          <input name="nombre_display" type="text" ng-model="vm.producto.nombre_display" id="nombre_display" class="form-control" placeholder="Ingresa nombre_display" required>
+          <div ng-messages="vm.form.productoForm.nombre_display.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">El nombre display es necesario.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="descripcion_larga">Descripcion larga</label>
+
+          <textarea name="descripcion_larga" ng-model="vm.producto.descripcion_larga" id="descripcion_larga" class="form-control" placeholder="Ejemplo: Una mochila versátil para llevar tus elementos esenciales del día a día. Con bloques de color en contraste para darle un look fresco y moderno, presenta un diseño con un bolsillo principal de cremallera, tiras ergonómicas, material acolchado de malla y un recubrimiento en la parte inferior que protege tu training." rows="6" cols="50" required>        
+          </textarea>
+
+          <div ng-messages="vm.form.productoForm.descripcion_larga.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Descripción es necesario.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="especificaciones">Especificaciones</label>
+          <textarea name="especificaciones" type="text" ng-model="vm.producto.especificaciones" id="especificaciones" class="form-control" placeholder="Ejemplo: Compartimiento principal con cremallera, bolsillo vertical con cremallera en la parte frontal superior y bolsillo frontal oculto con cremallera para los objetos de valor
+Correas ajustables para los hombros con diseño ergonómico y papeles acolchados con tejido de malla que favorecen la ventlación
+Parte inferior laminada con TPE muy resistente al desgaste
+Dimensiones: 16 cm x 3 cm x 46 cm
+Tejido liso 1% poliéster
+Silueta ergonómica de los tirantes del hombro
+Peso ideal: 248g" rows="6" cols="50" required>     
+          </textarea>
+          <div ng-messages="vm.form.productoForm.especificaciones.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Especificaciones.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="descripcion_corta">Descripción corta</label>
+          <input name="descripcion_corta" type="text" ng-model="vm.producto.descripcion_corta" id="descripcion_corta" class="form-control" placeholder="Ingresa descripcion_corta" required>
+          <div ng-messages="vm.form.productoForm.descripcion_corta.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">La descripción es necesaria.</p>
+          </div>
+        </div>
+
+        
+        <div class="form-group" show-errors>
+              <label class="control-label" for="categoria">Categoria</label>        
+             <select  name="categoria" type="text" ng-model="vm.producto.categoria" id="categoria" class="form-control">
+               <option ng-repeat="item in vm.categorias" value="{{item._id}}">{{item.nombre}}</option>
+             </select>
+              <div ng-messages="vm.form.productoForm.categoria.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">La categoria es necesaria.</p>
+              </div>
+        </div>
+        <div class="form-group" show-errors>
+              <label class="control-label" for="marca">Marca</label>        
+             <select  name="marca" type="text" ng-model="vm.producto.marca" id="marca" class="form-control">
+               <option ng-repeat="item in vm.marcas" value="{{item._id}}">{{item.nombre}}</option>
+             </select>
+              <div ng-messages="vm.form.productoForm.marca.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">La marca es necesaria.</p>
+              </div>
+        </div>
+         <div class="form-group" show-errors>
+          <label class="control-label" for="tags">Etiquetas</label>
+          <input name="tags" type="text" ng-model="vm.producto.tags" id="tags" class="form-control" placeholder="Ingresa las etiquetas: ejm producto1, iphone, 6s, samsung" required>
+          <div ng-messages="vm.form.productoForm.tags.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Las meta-etiquetas son necesarias.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.producto._id ? 'Actualizar' : 'Crear'}}</button>
+        </div>
+        <div class="form-group">
+        <a ui-sref="productos.thumbnail({ productoId: vm.producto._id })">Editar imágenes y thumbnails</a>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>
+
+                            
+                        </div>
+                    </div>
+          </div>
+      </div>
+    </div>
+
+
+
+

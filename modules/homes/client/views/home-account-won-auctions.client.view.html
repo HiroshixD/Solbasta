@@ -1,0 +1,60 @@
+
+    <main id="mi-cuenta" ng-init="vm.getWonAuctions(0);">
+      <div class="am">
+        <div class="sub-navegacion">
+          <nav>
+          <ul>
+              <li><a ui-sref="homes.summary" title="#" class="icon-usuario">Resumen</a></li>
+              <li><a ui-sref="homes.settings" title="#" class="icon-editar">Editar informacion</a></li>
+              <li><a ui-sref="homes.address" title="#" class="icon-marcador">Mis direcciones</a></li>
+              <li><a ui-sref="homes.balance" title="#" class="icon-archivos">Historial de solsazos</a></li>
+              <li><a ui-sref="homes.won" title="#" class="icon-copa activo">Subastas ganadas</a></li>
+              <li><a ui-sref="homes.payments" title="#" class="icon-billete">Pagos</a></li>
+              <li><a ui-sref="homes.referrals" title="#" class="icon-usuarios">Invitados</a></li>
+            </ul>
+          </nav>
+          <ul class="extra">
+            <li><a id="micodigo" href="#" title="Copiar mi código">Solsasos Gratis<span>Este es tu codigo<span class="icon-ticket">{{vm.authentication.user.referral_code}}</span>Compartelo con tus amigos para que lo ingresen en su registro y<b> gana solsazos.</b></span></a></li>
+            <li><a ui-sref="homes.charge" href="#">Compra solsazos</a></li>
+            <li><a ui-sref="homes.informacion-soporte">Ayuda</a></li>
+          </ul>
+        </div>
+        <section id="subastas-ganadas">
+          <h1><span>Subastas ganadas</span></h1>
+          <div id="filtros-subastas-ganadas" class="select-especial">
+            <select name="por" ng-model="vm.order">
+              <option value="" selected disabled>Ordenar por:</option>
+              <option value="fecha_inicio">Fecha</option>
+              <option value="estado_pago">Estado</option>
+              <option value="precio_vendido">Precio de subasta</option>
+            </select><span class="icon-flecha"></span>
+            <ul>
+              <li>Fecha</li>
+              <li>Estado</li>
+              <li>Precio de subasta</li>
+              <li>Hora</li>
+            </ul>
+          </div>
+          <h3 ng-show="vm.auctions.length === 0">AUN NO HAS GANADO NINGUNA SUBASTA, ¿QUE ESPERAS PARA OFERTAR?  <a href="#" ui-sref="homes.envivo">IR A SUBASTAS EN VIVO</a></h3>
+
+          <ul>
+            <li ng-repeat="item in vm.auctions | orderBy : vm.order">
+              <div class="imagen"><img ng-src="{{item.producto.thumbnail_1}}"></div>
+              <div class="datos">{{item.titulo}}<span>número de subasta: <b> #1234</b></span><a ui-sref="homes.details({ detalle_subastaId: item._id })" href="#">Ver subasta</a></div>
+              <div class="numeros">Fecha y hora de cierre:
+                <time>{{item.fecha_inicio | date: 'dd/MM/y HH:mm:ss'}}</time>
+              </div>
+              <div class="estado">Estado:<span>{{item.estado_envio === 1 ? "Entregado" : "No entregado"}}</span></div>
+              <div class="precio">Subasta ganada a:<span>s/.{{item.precio_vendido}}  </span></div>
+            </li>
+          </ul>
+          <div class="navegacion" ng-show="vm.auctions.length !== 0">
+            <button>&lt;&lt; Anterior<span>Primera página</span></button>
+            <button ng-repeat="item in vm.buttonsqty" ng-class="{'activo' : objeto.item === $index}" ng-click="vm.getWonAuctions($index)">{{item}}</button>
+            <button>&gt;&gt; Siguiente<span>Última página   </span></button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>

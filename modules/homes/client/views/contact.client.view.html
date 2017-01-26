@@ -1,0 +1,40 @@
+  <main id="contacto">
+      <div class="am">
+        <h1>Contactanos</h1>
+        <p>Contáctanos si tienes algún<b> problema, pregunta o comentario.</b> no te olvides de revisar nuestras páginas de ayuda y preguntas frecuentes para absolver tus dudas de una manera más rápida.</p>
+    <form ng-submit="vm.createContact()" novalidate>
+          <p>
+            <input name="nombre" placeholder="Nombre y apellidos" ng-model="vm.contacto.nombres" type="text" value=""><span class="icon-usuario"></span>
+          </p>
+          <p>
+            <input name="usuario" placeholder="Nombre de usuario" ng-model="vm.contacto.username" type="text" value=""><span class="icon-usuario2"></span>
+          </p>
+          <p>
+            <input name="email" placeholder="Dirección de correo electrónico*" ng-model="vm.contacto.email" type="email" value=""><span class="icon-email"></span>
+          </p>
+          <p>
+            <select name="tema" ng-model="vm.contacto.tema">
+              <option value="" selected>Selecciona un tema</option>
+              <option value="Registro o mi cuenta">Registro o mi cuenta</option>
+              <option value="Compra de soles">Compra de soles</option>
+              <option value="subastas y pagos">subastas y pagos</option>
+              <option value="Envios y devoluciones">Envios y devoluciones</option>
+              <option value="Promociones">Promociones</option>
+              <option value="Sugerencias o comentarios">Sugerencias o comentarios</option>
+              <option value="Otros">Otros</option>
+            </select><span class="icon-flecha"></span><span id="temas"><span>Registro o mi cuenta</span><span>Compra de soles</span><span>subastas y pagos</span><span>Envios y devoluciones</span><span>Promociones</span><span>Sugerencias o comentarios</span><span>Otros</span></span>
+          </p>
+          <p>
+            <input name="asunto" placeholder="Asunto" type="text" value="" ng-model="vm.contacto.asunto">
+          </p>
+          <p>
+            <textarea name="mensaje" placeholder="Mensaje" ng-model="vm.contacto.mensaje"></textarea>
+          </p>
+          <input type="submit" value="Enviar">
+        </form>
+        <p><span>Tambien hablanos por:</span><a href="#" title="Twitter Solbasta">twitter/solbasta</a><a href="#" title="Facebook Solbasta">facebook/solbasta</a></p>
+      </div>
+    </main>
+
+    
+        <script type="text/javascript" src="assets/js/script.js"></script>

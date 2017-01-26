@@ -1,0 +1,14 @@
+    <div id="subastas">
+      <div class="am">
+        <section class="categorias">
+          <h2>Categorias</h2>
+          <div class="chispeadas">
+
+          	<a ui-sref="homes.detailscategorias({ categoriaId: item._id })" title="{{item.nombre}}" ng-repeat="item in vm.categorias">
+          		<img ng-src="{{item.imageURL}}" alt="#">
+              <span>{{item.nombre}}</span>
+          	</a>
+          </div>
+        </section>
+      </div>
+    </div>

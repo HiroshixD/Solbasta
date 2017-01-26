@@ -1,0 +1,42 @@
+ <main id="iniciar-sesion">
+      <!-- LOS ELEMENTOS #registro-exitoso y #error, solo serán visibles si se les cambia su opacidad a "1", a travez de la propiedad CSS 'opacity';-->
+      <div class="am">
+        <div id="registro-exitoso"><b>¡Registro exitoso!</b> Inicia Sesión para confirmar tu cuenta</div>
+        <div class="intro">
+          <h2>Usuario nuevo<span>!Unete y empieza a ahorrar hoy!</span></h2>
+          <p>Solbasta es una experiencia única de compras en Internet a través de subastas al centavo, aquí encontrarás los mejores productos a precios increíblemente bajos. Únete a los miles de ganadores y <b>ahorra hasta 99% </b>sobre los precios de mercado.</p><a href="registrarte.html" title="Registrate aquí">Regístrate aquí</a>
+          <p>
+          <img src="assets/imagenes/iniciar-sesion/1.png">
+          <img src="assets/imagenes/iniciar-sesion/2.png">
+          <img src="assets/imagenes/iniciar-sesion/3.png">
+          <img src="assets/imagenes/iniciar-sesion/4.png">
+          <img src="assets/imagenes/iniciar-sesion/5.png">
+          </p>
+        </div>
+
+
+        <form name="vm.userForm" ng-submit="vm.signin(vm.userForm.$valid)" class="signin ng-pristine ng-invalid ng-invalid-required" novalidate="" autocomplete="off">
+          <h1>Inicia Sesión</h1>
+          <p>
+            <input type="text" id="username" name="username" class="ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched" ng-model="vm.credentials.username" placeholder="Nombre de usuario" lowercase="" required="" style="text-transform: lowercase;">
+            <span class="icon-usuario"></span>
+          </p>
+          <p>
+            <input type="password" id="password" name="password" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="vm.credentials.password" placeholder="Contraseña" required="">
+            <span class="icon-candado1"></span>
+          </p>
+          <p>
+            <input id="recordarme" type="checkbox" value="recordarme">
+            <label for="recordarme">Recuerda mi cuenta</label>
+          </p>
+          <p>
+            <input name="submit" value="Ingresa y gana" type="submit">
+          </p>
+          <p>¿Olvidaste tu nombre de usuario o contraseña?<a ui-sref="password.forgot" href="/password/forgot">Dale click aquí</a></p>
+          <div id="error"> <b>Ocurrió un error:</b> El usuario o la clave son incorrectos o no existen, trate de nuevo. </div>
+        </form>
+
+      </div>
+    </main>
+ 
+    <script type="text/javascript" src="assets/js/script.js"></script>
